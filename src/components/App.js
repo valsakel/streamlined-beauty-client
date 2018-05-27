@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import SignUpPage from './Routes/SignUpPage';
+
 import SignUpForm from './Forms/SignUpForm'
 import logo from '../logo.svg';
 import './App.css';
@@ -7,7 +10,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SignUpForm />
+        <Route exact path="/signup" component={SignUpPage} />
+        {/*<SignUpForm />*/}
         {/*<header className="App-header">*/}
           {/*<img src={logo} className="App-logo" alt="logo" />*/}
           {/*<h1 className="App-title">Welcome to React</h1>*/}

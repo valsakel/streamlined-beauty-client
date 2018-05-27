@@ -6,12 +6,6 @@ form {
     /*min-width: 340px;*/
 }
 
-label {
-
-    /*margin-top: 5rem;*/
-    margin-bottom: 0.3rem;
-}
-
 label,
 button,
 .account-message a {
@@ -22,6 +16,8 @@ button,
 }
 
 input, select {
+    display: block;
+    width: 100%;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -29,43 +25,46 @@ input, select {
     box-shadow: 1px 1px 4px #EBEBEB;
     -moz-box-shadow: 1px 1px 4px #EBEBEB;
     -webkit-box-shadow: 1px 1px 4px #EBEBEB;
-    /*border-radius: 3px;*/
-    /*-webkit-border-radius: 3px;*/
-    /*-moz-border-radius: 3px;*/
     line-height: 1.22rem;
     font-size: 1rem;
+    margin-top: 0.3rem;
     padding: 1rem;
     outline: none;
+    -webkit-transition: all 0.40s ease-in-out;
+    -moz-transition: all 0.40s ease-in-out;
+    -o-transition: all 0.40s ease-in-out;
 }
 
-input:hover, input:focus {
+input:hover, input:focus,
+select:hover, select:focus {
     -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
     box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
     border-color: #71676c;
 }
 
-input[type=submit]:hover,
-input[type=button]:hover{
-    background: #EA7B00;
-    color: #fff;
+input[type="radio"] {
+    margin: 5px 0 0 0;
+    box-shadow: inset 0 0 5px  rgb(255, 255, 255);
+
 }
 
-
+input[type="radio"]:hover,
+input[type="radio"]:focus {
+    -moz-transition: none;
+    -webkit-transition: none;
+    -o-transition: color 0 ease-in;
+    transition: none;
+    outline: #d95693 solid 2px;
+}
 
 button {
     color: #ffffff;
     background-color: #ce1277;
     border: 1px solid #ce1277;
-
-    /*border-color: transparent;*/
     margin-top: 2rem;
     padding: 1rem;
     width: 100%;
-    /*font-size: 0.8rem;*/
-    /*font-weight: 700;*/
-    /*text-transform: uppercase;*/
-    /*letter-spacing: 2px;*/
-    /*height: 4rem;*/
+    outline: 0;
 }
 
 button:hover,
@@ -74,36 +73,51 @@ button:active {
     color: #ce1277;
     background: #ffffff;
     border: 1px solid #ce1277;
-    /*border-color: #ce1277;*/
-    /*border-width: 1px;*/
-
 }
 
 #roleUserField, #roleProField {
+    width: 50%;
+    /*display: flex;*/
+    /*flex-direction: row;*/
     display: inline-block;
-    padding-left: 25%;
+    /*padding-left: 25%;*/
     margin-top: 1.5rem;
+    border: none;
 }
 
+#roleUserField label,
+#roleProField label {
+    display: block;
+    text-align: center;
+    /*padding-left: 25%;*/
+    /*padding-right: 15%;*/
+}
+
+#roleProField {
+    /*padding-left: 15%;*/
+    /*padding-right: 25%;*/
+}
+
+
+
 .signin-form {
-    display: flex;
-    flex-direction: column;
+    /*display: flex;*/
+    /*flex-direction: column;*/
     max-width: 500px;
     min-width: 340px;
     padding: 20px;
     margin: 0 auto;
-
 }
 
-.input-field {
+.form-field {
     position: relative;
-    display: flex;
-    flex-direction: column;
+    /*display: flex;*/
+    /*flex-direction: column;*/
     margin-top: 3rem;
     margin-bottom: 1.5rem;
 }
 
-.input-field > [input=radio] {
+.form-field > [form=radio] {
     color: #ce1277;
     display: inline;
 }
@@ -111,6 +125,7 @@ button:active {
 
 .account-message {
     margin: 20px auto 0 auto;
+    text-align: center;
 }
 
 .account-message a {

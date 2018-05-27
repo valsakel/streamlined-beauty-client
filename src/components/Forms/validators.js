@@ -1,6 +1,6 @@
 export const required = value => !value || value === 'Select location' ? 'Required field' : undefined;
 
-export const nonEmpty = value => !value.trim() ? 'Field cannot be empty' : undefined;
+export const nonEmpty = value => !value.trim() ? "Field can't be blank" : undefined;
 
 export const isTrimmed = value =>
   value.trim() === value ? undefined : 'Cannot start or end with whitespace';

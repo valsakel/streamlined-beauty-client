@@ -25,8 +25,6 @@ class SignUpForm extends React.Component {
     console.log(values);
   };
 
-
-
   render() {
     console.log(this.props);
     return (
@@ -74,6 +72,7 @@ class SignUpForm extends React.Component {
           )}
         </Field>
         <Field
+          id="roleUserField"
           name="role"
           label="User"
           component={Fields}
@@ -83,6 +82,7 @@ class SignUpForm extends React.Component {
 
         />
         <Field
+          id="roleProField"
           name="role"
           label="Pro"
           component={Fields}

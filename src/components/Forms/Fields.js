@@ -2,16 +2,11 @@ import React from 'react';
 import './forms.css';
 
 
-function Fields(props) {
-  console.log('Props', props);
-  // console.log('Fields props', props.input);
-  // console.log('Meta props', props.meta);
-  // console.log('Label props', props.label);
+const Fields = props => {
+  console.log('Field component rendered');
   const Element = props.element || 'input';
-
   return (
-
-    <div className="input-field" id={props.id}>
+    <div className="form-field" id={props.id}>
       <label htmlFor={props.input.name}>{props.label}
       <Element
         // id={props.input.name}
