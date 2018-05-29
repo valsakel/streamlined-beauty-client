@@ -1,19 +1,15 @@
 import React from 'react';
+import {connect} from "react-redux";
 
-class Card extends React.Component {
-  render() {
-    return (
-      <article className="freelancer-card">
-        <header>
-          Hello Card
-
-        </header>
-        <button>Send email</button>
-      </article>
-    )
-  }
+const Card = (props) => {
+  return (
+    <article className="freelancer-card">
+      <header>
+        {props.full_name}
+      </header>
+      <button>Send email</button>
+    </article>
+  )
 };
 
 export default Card;
-
-
