@@ -7,7 +7,7 @@ form {
 }
 
 label,
-button,
+.form-btn,
 .account-message a {
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -57,7 +57,7 @@ input[type="radio"]:focus {
     outline: #d95693 solid 2px;
 }
 
-button {
+.form-btn {
     color: #ffffff;
     background-color: #ce1277;
     border: 1px solid #ce1277;
@@ -67,9 +67,9 @@ button {
     outline: 0;
 }
 
-button:hover,
-button:focus,
-button:active {
+.form-btn:hover,
+.form-btn:focus,
+.form-btn:active {
     color: #ce1277;
     background: #ffffff;
     border: 1px solid #ce1277;

@@ -2,27 +2,24 @@ import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
 import Fields from './Fields';
 import {isTrimmed, nonEmpty, required, validEmail, length, matches} from './validators';
+import { registerUser } from '../../actions/registerUser';
 
 import './forms.css';
 
-const passwordLength = length({min: 10, max: 72});
+const passwordLength = length({min: 8, max: 72});
 const matchesPassword = matches('password');
 
-
-
-const locations = ['Select location', 'Kennesaw', 'Marietta', 'Acworth'];
-
+const locations = ['Select a location', 'Kennesaw', 'Marietta', 'Acworth'];
 
 class SignUpForm extends React.Component {
   onSubmit = (values) => {
-    if(!values.role) {
-      console.log('no role');
-      return (
-        <div>HELLO</div>
-      )
-    }
-    console.log(this.props);
     console.log(values);
+    const {full_name, email, password, location, role} = values;
+    const user = {full_name, email, password, location, role};
+
+    return this.props.dispatch(
+      registerUser(user)
+    );
   };
 
   render() {
@@ -30,11 +27,11 @@ class SignUpForm extends React.Component {
     return (
     <div className="signin-form">
       <form
-        method="post"
+        // method="post"
         onSubmit={this.props.handleSubmit(this.onSubmit)}
       >
         <Field
-          name="fullName"
+          name="full_name"
           label="Full name"
           type="text"
           component={Fields}
@@ -44,7 +41,7 @@ class SignUpForm extends React.Component {
         <Field
           // hideNativeErrors
           // onInvalid={e => e.preventDefault()}
-          name="emailAddress"
+          name="email"
           label="Email address"
           type="email"
           component={Fields}
@@ -60,8 +57,8 @@ class SignUpForm extends React.Component {
           autocomplete="off"
         />
         <Field
-          name="locations"
-          label="Locations"
+          name="location"
+          label="Location"
           element="select"
           component={Fields}
           validate={required}
@@ -127,6 +124,7 @@ class SignUpForm extends React.Component {
           {/*// validate={required}*/}
         {/*/>*/}
         <button
+          className="form-btn"
           type="submit"
         >
           Sign Up

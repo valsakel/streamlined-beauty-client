@@ -1,0 +1,24 @@
+a {
+    display: block;
+    margin: 0 auto;
+}
+
+.menu-details {
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+}
+
+
+.navbar-close {
+    display: block;
+    transform: rotate(-90deg);
+    top: 2px;
+    /*left: 0;*/
+}
+
+.navbar-collapse {
+    /*position: absolute;*/
+    /*top: 80px;*/
+    background-color: #C2C2C2;
+}

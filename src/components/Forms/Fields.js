@@ -23,12 +23,9 @@ const Fields = props => {
         If error evaluates to true -> show span element
         if error is undefined -> React ignores the span element
       */}
-      {/*{props.meta.dirty &&*/}
-      {/*<div>HELLO</div>}*/}
-
       {props.meta.error &&
         props.meta.touched &&
-          <div className="form-error">{props.meta.error}</div>}
+          <div className="form-error" aria-live="polite">{props.meta.error}</div>}
     </div>
     // </React.Fragment>
   );
