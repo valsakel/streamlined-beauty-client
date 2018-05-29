@@ -14,7 +14,7 @@ const NavbarCollapleMenu = () => {
       </button>
       <div className="menu-details">
         <Link to="/">Home</Link>
-        <Link to="/">Search</Link>
+        <Link to="/board">Browse</Link>
         <Link to="/">How it works</Link>
         <Link to="/signup">Sign Up</Link>
         <Link to="/signin">Sign In</Link>

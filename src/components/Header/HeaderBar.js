@@ -6,11 +6,11 @@ import './HeaderBar.css';
 
 const HeaderBar = () => {
   return (
-    <header>
+    <header className="navbar-header">
       <nav>
-        <div className="navbar-header">
+        <div className="">
           <Link to="/menu">
-            <button className="navbar-toggle navbar-close" /*aria-expanded={}*/ type="button">
+            <button className="navbar-toggle" /*aria-expanded={}*/ type="button">
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
