@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const UserProfile = (props) => {
+const Profile = (props) => {
   return (
     <React.Fragment>
     <div>Hello User Profile</div>
@@ -15,4 +15,4 @@ const UserProfile = (props) => {
   );
 };
 
-export default UserProfile;
+export default Profile;

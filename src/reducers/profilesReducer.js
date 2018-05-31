@@ -1,4 +1,4 @@
-import { POPULATE_MAIN_DASHBOARD_SUCCESS, POPULATE_MAIN_DASHBOARD_ERROR } from '../actions/mainDashboard';
+import { POPULATE_PROFILES_SUCCESS, POPULATE_PROFILES_ERROR } from '../actions/profiles';
 
 const initialState = {
   data: [],
@@ -6,14 +6,14 @@ const initialState = {
 };
 
 export default function reducer (state = initialState, action) {
-  if (action.type === POPULATE_MAIN_DASHBOARD_SUCCESS) {
+  if (action.type === POPULATE_PROFILES_SUCCESS) {
     return {
       data: action.data,
       error: null
     }
   }
 
-  if (action.type === POPULATE_MAIN_DASHBOARD_ERROR) {
+  if (action.type === POPULATE_PROFILES_ERROR) {
     return {
       ...state,
       error: action.error

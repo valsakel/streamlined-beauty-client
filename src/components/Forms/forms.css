@@ -129,6 +129,7 @@ input[type="radio"]:focus {
 }
 
 .account-message a {
+    display: inline-block;
     color: #ce1277;
     text-decoration: none;
     letter-spacing: normal;

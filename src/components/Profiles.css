@@ -1,0 +1,22 @@
+.main-dashboard {
+    display: flex;
+    flex-direction: column;
+}
+
+.data-card {
+    margin: 0 20px 20px 20px;
+}
+
+.data-card-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.data-card-img {
+    width: 100px;
+    height: 100px;
+}
+
+.data-user-img {
+    width: 100%;
+}

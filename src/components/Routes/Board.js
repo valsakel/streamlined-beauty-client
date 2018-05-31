@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import HeaderBar from '../Header/HeaderBar';
-import MainBoard from '../Board/MainBoard';
-import UserProfile from '../Board/UserProfile';
+import HeaderBar from '../Layout/HeaderBar';
+import MainBoard from '../Profiles/Profiles';
+import Profile from '../demoProfile/Profile';
 
 const Board = () => {
   return (
@@ -11,7 +11,7 @@ const Board = () => {
       <HeaderBar />
       <Switch>
         <Route exact path="/board" component={MainBoard} />
-        <Route path="/board/:id" component={UserProfile} />
+        <Route path="/board/:id" component={Profile} />
       </Switch>
     </React.Fragment>
   )

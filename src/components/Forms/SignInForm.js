@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { reduxForm, Field } from 'redux-form';
 
 import './forms.css';
@@ -51,7 +52,11 @@ class SignInForm extends React.Component {
             Sign In
           </button>
         </form>
-        <p className="account-message">New to SB?<a href="#">Sign Up</a></p>
+        <p
+          className="account-message">
+          New to SB?
+          <Link to="/signup">Sign Up</Link>
+        </p>
       </div>
     )
   }

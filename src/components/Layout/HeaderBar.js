@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Index from './index';
 import NavbarCollapsMenu from './NavbarCollapseMenu';
 
 import './HeaderBar.css';

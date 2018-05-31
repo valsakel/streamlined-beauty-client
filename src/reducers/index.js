@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import {reducer as formReducer} from 'redux-form';
 import authUserReducer from './authUserReducer';
-import mainDashboardDataReducer from './mainDashboardReducer';
+import profilesReducer from './profilesReducer';
 
 const rootReducer = combineReducers({
   auth: authUserReducer,
-  main_dashboard: mainDashboardDataReducer,
+  main_dashboard: profilesReducer,
   form: formReducer
 });
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { reduxForm, Field, focus } from 'redux-form';
 import Fields from './Fields';
 import {isTrimmed, nonEmpty, required, validEmail, length, matches} from './validators';
@@ -130,7 +131,12 @@ class SignUpForm extends React.Component {
           Sign Up
         </button>
       </form>
-      <p className="account-message">Already have an account?<a href="#">Sign In</a></p>
+      <p
+        className="account-message"
+      >
+        Already have an account?
+        <Link to="/signin">Sign In</Link>
+      </p>
     </div>
     )
   }
