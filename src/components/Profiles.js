@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import HeaderBar from './HeaderBar';
 
-
-
 import placeholder_person from '../images/placeholder_person.jpg';
 
 import { fetchProfiles } from '../actions/profiles';
@@ -36,7 +34,7 @@ class Profiles extends React.Component {
 
             </header>
             <footer>
-              <Link to={`/profiles/profile${user.id}`}>View profile</Link>
+              <Link to={`/profiles/${user.id}`}>View profile</Link>
               {/*<button>View profile</button>*/}
             </footer>
           </article>
@@ -57,7 +55,7 @@ class Profiles extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.main_dashboard.data
+    data: state.profiles.data
   }
 };
 

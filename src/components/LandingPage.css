@@ -1,9 +1,9 @@
 .container {
     width: 100vw;
     height: 100vh;
-    /*background-color: red;*/
-    background-size: 100%;
-    background: transparent url('../images/black_white_orchid.jpg') no-repeat fixed center;
-    /*background-image: url('../images/black_white_orchid.jpg');*/
+    background-image: url('../images/black_white_orchid.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
 }
