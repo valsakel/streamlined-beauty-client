@@ -13,6 +13,7 @@ export const fetchProfileDetailsError = error => ({
 });
 
 export const fetchProfileDetails = (userId) => (dispatch, getState) => {
+  console.log(userId);
   // const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/profiles/${userId}`, {
     method: 'GET',
@@ -32,5 +33,4 @@ export const fetchProfileDetails = (userId) => (dispatch, getState) => {
       dispatch(fetchProfileDetailsError(error));
     });
 };
-
 

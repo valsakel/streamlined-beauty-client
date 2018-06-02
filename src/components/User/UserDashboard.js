@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import HeaderBar from './HeaderBar';
+
+
 import ServiceList from './ServiceList';
 
 import placeholder_person from '../../images/placeholder_person.jpg';
@@ -15,6 +18,7 @@ class UserDashboard extends React.Component {
     console.log(this.data);
     return (
       <React.Fragment>
+        <HeaderBar />
         <div>
           Hello User Dashboard
         </div>

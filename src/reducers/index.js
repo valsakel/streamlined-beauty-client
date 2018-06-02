@@ -1,13 +1,17 @@
 import { combineReducers } from 'redux';
 import {reducer as formReducer} from 'redux-form';
-import authUserReducer from './authUserReducer';
-import profilesReducer from './profilesReducer';
-import profileDetailsReducer from './profileDetailsReducer';
+import auth from './authUserReducer';
+import profiles from './profilesReducer';
+import profileDetails from './profileDetailsReducer';
+import services from './servicesReducer';
+import myProfile from './myProfileReducer';
 
 const rootReducer = combineReducers({
-  auth: authUserReducer,
-  profiles: profilesReducer,
-  profileDetails: profileDetailsReducer,
+  auth,
+  profiles,
+  profileDetails,
+  services,
+  myProfile,
   form: formReducer
 });
 

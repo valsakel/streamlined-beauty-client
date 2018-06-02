@@ -28,13 +28,17 @@ class Profiles extends React.Component {
               </div>
               <div className="data-user-info">
                 <h4>{user.full_name}</h4>
+                <p>{user.service_type}</p>
                 <p>{user.location}</p>
 
               </div>
 
             </header>
+            <section>
+
+            </section>
             <footer>
-              <Link to={`/profiles/${user.id}`}>View profile</Link>
+              <Link to={`/profiles/details/${user.user_id}`}>View profile</Link>
               {/*<button>View profile</button>*/}
             </footer>
           </article>

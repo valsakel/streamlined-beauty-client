@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { reduxForm, Field, focus } from 'redux-form';
+import { connect } from 'react-redux';
+import { reduxForm, Field, focus, formValueSelector } from 'redux-form';
 import Fields from './Fields';
 import {isTrimmed, nonEmpty, required, validEmail, length, matches} from './validators';
 import { registerUser } from '../../actions/registerUser';
@@ -15,16 +16,18 @@ const locations = ['Select a location', 'Kennesaw', 'Marietta', 'Acworth'];
 class SignUpForm extends React.Component {
   onSubmit = (values) => {
     console.log(values);
-    const {full_name, email, password, location, role} = values;
-    const user = {full_name, email, password, location, role};
+    const {full_name, email, password, location, role, service_type = ''} = values;
+    const user = {full_name, email, password, location, role, service_type};
 
     return this.props.dispatch(
+
       registerUser(user)
     );
   };
 
   render() {
-    console.log(this.props);
+    // const userProRole = this.props;
+    console.log(this.props.roleValue);
     return (
     <div className="signin-form">
       <form
@@ -90,46 +93,23 @@ class SignUpForm extends React.Component {
 
 
         />
-        {/*<div>*/}
-          {/*<label>Sex</label>*/}
-          {/*<div>*/}
-            {/*<label>*/}
-              {/*<Field name="sex" component="input" type="radio" value="male" />*/}
-              {/*{' '}*/}
-              {/*Male*/}
-            {/*</label>*/}
-            {/*<label>*/}
-              {/*<Field name="sex" component="input" type="radio" value="female" />*/}
-              {/*{' '}*/}
-              {/*Female*/}
-            {/*</label>*/}
-          {/*</div>*/}
-        {/*</div>*/}
-        {/*<Field*/}
-          {/*id="roleUserField"*/}
-          {/*name="roleUser"*/}
-          {/*label="User"*/}
-          {/*type="radio"*/}
-          {/*component={Fields}*/}
-          {/*value="user"*/}
-          {/*isToggle={false}*/}
-        {/*/>*/}
-        {/*<Field*/}
-          {/*id="roleProField"*/}
-          {/*name="rolePro"*/}
-          {/*label="Pro"*/}
-          {/*type="radio"*/}
-          {/*component={Fields}*/}
-          {/*isToggle={true}*/}
-          {/*value="pro"*/}
-          {/*// validate={required}*/}
-        {/*/>*/}
+        {(this.props.roleValue === 'pro') &&
+          <Field
+          name="service_type"
+          label="Service type"
+          type="text"
+          component={Fields}
+          // validate={[required, nonEmpty, isTrimmed]}
+          autocomplete="off"
+          />
+        }
         <button
           className="form-btn"
           type="submit"
         >
           Sign Up
         </button>
+        <button type="button" disabled={this.props.pristine || this.props.submitting} onClick={this.props.reset}>Clear Values</button>
       </form>
       <p
         className="account-message"
@@ -142,6 +122,28 @@ class SignUpForm extends React.Component {
   }
 }
 
-export default reduxForm({
+
+
+
+SignUpForm = reduxForm({
   form: 'signup'
 })(SignUpForm);
+
+const selector = formValueSelector('signup');
+
+// Pass values from radio buttons to props
+// This will allow to conditionally add 'Select type' field to the form
+SignUpForm = connect(
+  state => {
+    const roleValue = selector(state, 'role');
+    return {
+      roleValue
+    }
+  }
+)(SignUpForm);
+
+export default SignUpForm;
+
+// export default reduxForm({
+//   form: 'signup'
+// })(SignUpForm);

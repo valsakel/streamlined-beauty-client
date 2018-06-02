@@ -24,6 +24,7 @@
 }
 
 #flyoutMenu a {
+    display: block;
     color: #FFF;
 
     margin-left: 15px;

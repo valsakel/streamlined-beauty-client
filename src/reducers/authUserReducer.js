@@ -7,7 +7,7 @@ const initialState = {
   error: null
 };
 
-export default function authUserReducer (state = initialState, action) {
+export default function reducer (state = initialState, action) {
 
   if(action.type === AUTH_REQUEST) {
     console.log('hello AUTH_REQUEST');
