@@ -19,6 +19,7 @@ class SlidingMenu extends React.Component {
         <Link to="/">How it works</Link>
         <Link to="/signup">Sign Up</Link>
         <Link to="/signin">Sign In</Link>
+        <Link to="/profiles/myprofile">My Profile</Link>
       </div>
     );
   }

@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import RequiresLogin from './RequiresLogin';
+
 import HeaderBar from './HeaderBar';
 import MyProfileAccountForm from './MyProfileAccountForm';
 
-import { editAccountStart } from '../actions/myProfileActions';
+import { editProfileAccountStart, fetchMyProfileDetails } from '../actions/myProfileActions';
 
 
 import placeholder_person from '../images/placeholder_person.jpg';
@@ -13,15 +15,16 @@ class MyProfile extends React.Component {
   componentDidMount() {
     console.log('MyProfile did mount');
     console.log(this.props);
-  }
+    this.props.dispatch(fetchMyProfileDetails())
 
+  }
   onEditAccount = e => {
     // e.preventDefault;
     console.log('onEditSubmit ran');
   };
 
   render() {
-    console.log(this.data);
+    console.log(this.props.user);
     return (
       <React.Fragment>
         <HeaderBar />
@@ -47,18 +50,13 @@ class MyProfile extends React.Component {
                 <p>foo@bar.com</p>
               </div>
               <div>
-                <button type="button" onClick={() => this.props.dispatch(editAccountStart())}>Edit</button>
+                <button type="button" onClick={() => this.props.dispatch(editProfileAccountStart())}>Edit</button>
               </div>
             </main>
 
 
           </section>
         }
-
-
-
-
-
 
 
 
@@ -71,10 +69,13 @@ class MyProfile extends React.Component {
 const mapStateToProps = state => {
   // const currentUser = state.main_dashboard.data[2];
   return {
-    editAccount: state.my_profile.editAccount
+    editAccount: state.myProfile.editAccount,
+    user: state.auth.currentUser
+    // email: state.auth.currentUser.email,
+
 
     // data: state.main_dashboard.data
   }
 };
 
-export default connect(mapStateToProps)(MyProfile);
+export default RequiresLogin()(connect(mapStateToProps)(MyProfile));

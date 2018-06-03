@@ -18,6 +18,7 @@ class Profiles extends React.Component {
 
   render() {
     console.log(this.props);
+
     const users = this.props.data.map((user, ind) => (
         <section className="data-card" key={ind}>
           <article>

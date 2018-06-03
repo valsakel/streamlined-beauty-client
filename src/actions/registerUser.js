@@ -1,6 +1,6 @@
 import { API_BASE_URL } from '../config';
 
-import { authRequest } from './authUser';
+import { authRequest } from './auth';
 
 //
 // export const registerUser = (user) => {

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import {reducer as formReducer} from 'redux-form';
-import auth from './authUserReducer';
+import auth from './authReducer';
 import profiles from './profilesReducer';
 import profileDetails from './profileDetailsReducer';
 import services from './servicesReducer';

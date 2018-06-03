@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { reduxForm, Field } from 'redux-form';
+
+import { editProfileAccountEnd } from '../actions/myProfileActions';
+
 import {isTrimmed, required, validEmail} from "./Forms/validators";
 import Fields from "./Forms/Fields";
 
@@ -63,8 +66,8 @@ class MyProfileAccountForm extends React.Component {
             // validate={[required, validEmail, isTrimmed]}
             // autoomplete="off"
           />
-          <button>Add</button>
-          <button type="button" onClick={() => this.setEditing(false)}>
+          <button type="submit">Save</button>
+          <button type="button" onClick={() => this.props.dispatch(editProfileAccountEnd())}>
             Cancel
           </button>
 
