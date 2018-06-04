@@ -1,0 +1,52 @@
+.return-link-section {
+    padding: 20px;
+    background-color: #ffffff;
+
+}
+
+.return-link-section a {
+    text-decoration: none;
+    /*text-transform: uppercase;*/
+    /*display: inline-block;*/
+    color: #ce1277;
+    /*letter-spacing: normal;*/
+    margin-left: 5px;
+}
+
+.data-card-services {
+    border-top: 1px solid #818181;
+    margin: 1em;
+    padding: 1em;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    text-align: center;
+}
+
+.data-card-services-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /*border: 1px solid black;*/
+    /*border-bottom: 1px solid black;*/
+}
+
+.data-card-services-section ul {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.data-card-services-header {
+    margin: 0 auto;
+    padding: 0;
+    text-transform: uppercase;
+    color: #ce1277;
+    letter-spacing: 1px;
+
+    /*border-top: 1px solid black;*/
+    /*border-bottom: 1px solid black;*/
+}
+
+.data-card-services-section li {
+    list-style: none;
+}

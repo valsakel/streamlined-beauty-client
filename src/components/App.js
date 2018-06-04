@@ -17,7 +17,7 @@ class App extends Component {
       <div className="App">
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/profiles" component={Profiles}/>
-        <Route exact path="/profiles/details/:user_id" component={MyProfile}/>
+        <Route exact path="/profiles/details/:user_id" component={Profile}/>
 
         <Route exact path="/profiles/myprofile" component={MyProfile}/>
         <Route exact path="/signup" component={SignUpPage} />

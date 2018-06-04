@@ -6,9 +6,9 @@ import HeaderBar from './HeaderBar';
 import './LandingPage.css';
 
 const LandingPage = (props) => {
-  if (props.signedIn) {
-    return <Redirect to="/profiles"/>
-  }
+  // if (props.signedIn) {
+  //   return <Redirect to="/profiles"/>
+  // }
 
   return (
     <React.Fragment>

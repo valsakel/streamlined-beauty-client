@@ -6,6 +6,23 @@
     height: 80px;
     background-color: black;
     color: white;
+    padding: 0 1em 0 1em;
+}
+
+.header-link {
+    color: #ffffff;
+    font-size: calc(1.2rem + .9vw);
+    text-decoration: none;
+
+}
+
+.header-link span {
+    color: #ce1277;
+}
+
+.header-link:active, a:hover, a:visited {
+    color: #ffffff;
+    text-decoration: none;
 }
 
 #menuButton {

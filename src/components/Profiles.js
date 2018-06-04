@@ -20,15 +20,15 @@ class Profiles extends React.Component {
     console.log(this.props);
 
     const users = this.props.data.map((user, ind) => (
-        <section className="data-card" key={ind}>
-          <article>
+        <section className="data-card-section" key={ind}>
+          <article className="data-card-article">
             <header className="data-card-header">
               <div className="data-card-img">
                 <img src={placeholder_person} className="data-user-img" alt="placeholder clip art" />
 
               </div>
-              <div className="data-user-info">
-                <h4>{user.full_name}</h4>
+              <div className="data-card-info">
+                <h3>{user.full_name}</h3>
                 <p>{user.service_type}</p>
                 <p>{user.location}</p>
 
@@ -39,7 +39,13 @@ class Profiles extends React.Component {
 
             </section>
             <footer>
-              <Link to={`/profiles/details/${user.user_id}`}>View profile</Link>
+              <Link
+                to={`/profiles/details/${user.user_id}`}
+                className="button-link"
+                aria-label="Click to view freelancer's profile"
+              >
+                View profile
+              </Link>
               {/*<button>View profile</button>*/}
             </footer>
           </article>

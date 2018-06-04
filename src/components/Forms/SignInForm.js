@@ -32,41 +32,44 @@ class SignInForm extends React.Component {
     return (
       <React.Fragment>
         <HeaderBar />
-        <div className="signin-form">
-          <form
-            // method="post"
-            onSubmit={this.props.handleSubmit(this.onSubmit)}
-          >
-            <Field
-              // hideNativeErrors
-              // onInvalid={e => e.preventDefault()}
-              name="emailAddress"
-              label="Email address"
-              type="email"
-              component={Fields}
-              validate={[required, validEmail, isTrimmed]}
-              autocomplete="off"
-            />
-            <Field
-              name="password"
-              label="Password"
-              type="password"
-              component={Fields}
-              validate={[required, isTrimmed, passwordLength]}
-              autocomplete="off"
-            />
-            <button
-              className="form-btn"
-              type="submit"
+        <div className="signin-form-wrapper">
+            <div className="signin-form">
+              <h2 className="signin-form-header">Account Sign In</h2>
+              <form
+              // method="post"
+              onSubmit={this.props.handleSubmit(this.onSubmit)}
             >
-              Sign In
-            </button>
-          </form>
-          <p
-            className="account-message">
-            New to SB?
-            <Link to="/signup">Sign Up</Link>
-          </p>
+              <Field
+                // hideNativeErrors
+                // onInvalid={e => e.preventDefault()}
+                name="emailAddress"
+                label="Email address"
+                type="email"
+                component={Fields}
+                validate={[required, validEmail, isTrimmed]}
+                autocomplete="off"
+              />
+              <Field
+                name="password"
+                label="Password"
+                type="password"
+                component={Fields}
+                validate={[required, isTrimmed, passwordLength]}
+                autocomplete="off"
+              />
+              <button
+                className="form-btn"
+                type="submit"
+              >
+                Sign In
+              </button>
+            </form>
+            <p
+              className="account-message">
+              New to SB?
+              <Link to="/signup">Sign Up</Link>
+            </p>
+            </div>
         </div>
       </React.Fragment>
     )

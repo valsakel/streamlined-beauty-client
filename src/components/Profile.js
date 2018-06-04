@@ -7,6 +7,7 @@ import {fetchServices} from '../actions/services';
 
 import HeaderBar from './HeaderBar';
 
+import './Profile.css';
 import placeholder_person from '../images/placeholder_person.jpg';
 
 
@@ -27,49 +28,57 @@ class Profile extends React.Component {
     return (
       <React.Fragment>
         <HeaderBar />
-        <Link to="/profiles">Back to the board</Link>
-
-        <div>
-          Hello Profile
+        <div className="return-link-section">
+          <Link
+            to="/profiles"
+            aria-label="Click to return to the board"
+          > &larr; &ensp; Back to the board</Link>
         </div>
 
-        <a href={`mailto:${this.props.user.email}?subject=Schedule%20an%20appointment`}>Send email</a>
 
-        <section className="data-card">
-          <article>
+        <section className="data-card-section">
+          <a
+            href={`mailto:${this.props.user.email}?subject=Schedule%20an%20appointment`}
+            className="button-link"
+            aria-label="Click to send an email"
+          >
+            Send email
+          </a>
+          <article className="data-card-article">
             <header className="data-card-header">
               <div className="data-card-img">
               <img src={placeholder_person} className="data-user-img" alt="placeholder clip art" />
 
               </div>
-              <div className="data-user-info">
-              <h4>{this.props.user.full_name}</h4>
+              <div className="data-card-info">
+              <h3>{this.props.user.full_name}</h3>
                 <p>{this.props.user.service_type}</p>
                 <p>{this.props.user.location}</p>
 
               </div>
 
             </header>
-            <section>
-              <div>
-                <h4>Service</h4>
-                <ul>
-                  {this.props.services.map((service, ind) => (<li key={ind}>{service.service}</li>))}
-                </ul>
+            <section className="data-card-services">
+              <h3 className="data-card-services-header">Services</h3>
+              <div className="data-card-services-section">
+                <div>
+                  {/*<h4 className="data-card-services-header">Service</h4>*/}
+                  <ul>
+                    {this.props.services.map((service, ind) => (<li key={ind}>{service.service}</li>))}
+                  </ul>
+                </div>
+                <div>
+                  {/*<h4 className="data-card-services-header">*/}
+                  {/*Price*/}
+                  {/*</h4 >*/}
+                  <ul>
+                    {this.props.services.map((service, ind) => (<li key={ind}>${service.price}</li>))}
+                  </ul>
+                </div>
               </div>
-              <div>
-                <h4>
-                  Price
-                </h4>
-                <ul>
-                  {this.props.services.map((service, ind) => (<li key={ind}>{service.price}</li>))}
-                </ul>
-              </div>
-
-              <ul>
 
 
-              </ul>
+
             </section>
             <footer>
               {/*<Link to={`/profiles/profile${this.props.user.id}`}>View profile</Link>*/}

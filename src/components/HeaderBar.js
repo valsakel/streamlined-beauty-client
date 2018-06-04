@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SlidingMenu from './SlidingMenu'
 
 import './HeaderBar.css'
@@ -33,9 +34,16 @@ class HeaderBar extends React.Component {
                      menuVisibility={this.state.visible}/>
         <header className="header-bar">
           <div>
-            <h3>
-              StreamlinedBeauty
-            </h3>
+            <Link
+              to="/"
+              className="header-link"
+            >
+              {/*<h3>*/}
+                Streamlined
+              <span>Beauty</span>
+              {/*</h3>*/}
+            </Link>
+
           </div>
           <nav>
             <button
