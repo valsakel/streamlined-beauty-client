@@ -44,8 +44,8 @@ export default function reducer (state = initialState, action) {
   } else if (action.type === CLEAR_AUTH) {
     return {
       ...state,
-      lading: false,
-      error: null
+      authToken: null,
+      currentUser: null
     }
   }
   return state;

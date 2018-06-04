@@ -29,20 +29,24 @@
     justify-content: center;
     /*border: 1px solid black;*/
     /*border-bottom: 1px solid black;*/
+    -webkit-box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+    box-shadow: 0 1px 6px rgba(57,73,76,0.35);
 }
 
 .data-card-services-section ul {
     padding-right: 10px;
     padding-left: 10px;
+
 }
 
 .data-card-services-header {
     margin: 0 auto;
     padding: 0;
     text-transform: uppercase;
-    color: #ce1277;
-    letter-spacing: 1px;
+    text-decoration: underline;
 
+    color: #ce1277;
+    letter-spacing: 2px;
     /*border-top: 1px solid black;*/
     /*border-bottom: 1px solid black;*/
 }
