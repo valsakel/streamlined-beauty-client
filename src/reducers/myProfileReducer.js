@@ -6,8 +6,8 @@ import {
 
 const initialState = {
   data: {},
+  addedServices: [],
   editAccount: false,
-  editServices: false,
   error: null
 };
 
@@ -37,6 +37,8 @@ export default function reducer (state = initialState, action) {
       editAccount: false
     }
   }
+
+
 
   return state;
 };

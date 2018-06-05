@@ -3,17 +3,24 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     height: 80px;
+    position: fixed;
+    z-index: 1;
     background-color: black;
     color: white;
-    padding: 0 1em 0 1em;
+}
+
+.header-bar nav {
+    margin-right: 1.7rem;
+
 }
 
 .header-link {
     color: #ffffff;
     font-size: calc(1.2rem + .9vw);
     text-decoration: none;
-
+    margin-left: 1.7rem;
 }
 
 .header-link span {
@@ -24,6 +31,8 @@
     color: #ffffff;
     text-decoration: none;
 }
+
+
 
 #menuButton {
     background-color: transparent;

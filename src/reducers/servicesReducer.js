@@ -1,13 +1,15 @@
-import { FETCH_SERVICES_SUCCESS, FETCH_SERVICES_ERROR } from '../actions/services';
+import { FETCH_SERVICES_SUCCESS, FETCH_SERVICES_ERROR } from '../actions/profile';
 
 const initialState = {
   data: [],
+  services: ['Pick a service', 'Make-up', 'Manicure', 'Pedicure', 'Wedding Trail'],
   error: null
 };
 
 export default function reducer (state = initialState, action) {
   if (action.type === FETCH_SERVICES_SUCCESS) {
     return {
+      ...state,
       data: action.data,
       error: null
     }

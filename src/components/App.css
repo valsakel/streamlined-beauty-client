@@ -4,7 +4,12 @@
   /*font-family: Lato, serif;*/
   font-family: 'Raleway', sans-serif;
   font-size: calc(.7rem + .9vw);
-  height: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  overflow: auto;
 }
 
 .App-logo {

@@ -1,0 +1,90 @@
+.my-profile-section {
+    margin: 1em;
+}
+
+.my-profile-account {
+    background: #ffffff;
+    padding: 1em;
+    margin-top: 1em;
+    -webkit-box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+    box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+}
+
+.my-profile-account h2 {
+    border-bottom: 1px solid #959595;
+}
+
+
+.my-profile-account-info {
+    display: -ms-flexbox;
+    display: flex;
+
+    -ms-flex-direction: column;
+    flex-direction: column;
+    /*-ms-flex-pack: space-evenly;*/
+    justify-content: space-evenly;
+    padding-left: 1em;
+    /*-ms-flex-align: end;*/
+    /*align-items: flex-end;*/
+    /*flex-grow: 2;*/
+    flex-basis: 55%;
+}
+
+.my-profile-account-info > * {
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+.my-profile-edit-btn-section {
+    flex-basis: 20%;
+}
+
+.profile-edit-btn {
+    font-family: 'Raleway', sans-serif;
+    color: #ffffff;
+    background-color: #ce1277;
+    border: 1px solid #ce1277;
+    margin-top: 2rem;
+    padding: 1rem;
+    width: 100%;
+    outline: 0;
+
+}
+
+.my-profile-services-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 1em;
+    text-align: center;
+
+}
+
+.my-profile-services-section ul {
+    padding-right: 10px;
+    padding-left: 10px;
+
+}
+
+.my-profile-services-section li {
+    list-style: none;
+}
+
+.my-profile-services h2 {
+    border-bottom: 1px solid #959595;
+}
+
+.my-profile-add-service-link {
+    font-size: 1em;
+    color: #ce1277;
+    text-decoration: none;
+}
+
+.my-profile-add-service-link:visited,
+.my-profile-add-service-link:active {
+    color: #ce1277;
+}
+
+.my-profile-add-service-link:hover {
+    text-decoration: underline;
+}

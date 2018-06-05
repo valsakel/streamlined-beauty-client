@@ -24,7 +24,6 @@ class App extends Component {
         <Route exact path="/signin" component={SignInPage} />
         {/*<Route exact path="/menu" component={NavbarCollapseMenu} />*/}
         {/*<Route exact path="/dashboard/:id" component={Dashboard} />*/}
-
       </div>
     );
   }

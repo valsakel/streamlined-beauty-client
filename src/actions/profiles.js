@@ -12,7 +12,19 @@ export const populateProfilesError = error => ({
   error
 });
 
-export const fetchProfiles = () => (dispatch, getState) => {
+export const SET_PROFILE_LOCATION_FILTER = 'SET_PROFILE_LOCATION_FILTER';
+export const setProfileLocationFilter = location => ({
+  type: SET_PROFILE_LOCATION_FILTER,
+  location
+});
+
+export const SET_PROFILE_SERVICE_FILTER = 'SET_PROFILE_SERVICE_FILTER';
+export const setProfileServiceFilter = service => ({
+  type: SET_PROFILE_SERVICE_FILTER,
+  service
+});
+
+export const fetchProfiles = (location) => (dispatch, getState) => {
   // const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/profiles`, {
     method: 'GET',

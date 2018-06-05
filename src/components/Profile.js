@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { fetchProfileDetails } from '../actions/profileDetails';
-import {fetchServices} from '../actions/services';
+import { fetchProfileDetails, fetchServices } from '../actions/profile';
 
 import HeaderBar from './HeaderBar';
 
@@ -28,6 +27,7 @@ class Profile extends React.Component {
     return (
       <React.Fragment>
         <HeaderBar />
+        <main className="main-dashboard">
         <div className="return-link-section">
           <Link
             to="/profiles"
@@ -87,7 +87,7 @@ class Profile extends React.Component {
           </article>
         </section>
 
-
+        </main>
       </React.Fragment>
 
 
@@ -98,7 +98,7 @@ class Profile extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.profileDetails.data,
+    user: state.profile.data,
     services: state.services.data
   }
 };

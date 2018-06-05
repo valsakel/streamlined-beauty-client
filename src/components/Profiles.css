@@ -1,8 +1,11 @@
 .main-dashboard {
+    position: relative;
+    top: 80px;
     margin: 0 auto;
     max-width: 900px;
     display: flex;
     flex-direction: column;
+
     /*padding-top: 30px;*/
     /*padding-bottom: 30px;*/
 }
