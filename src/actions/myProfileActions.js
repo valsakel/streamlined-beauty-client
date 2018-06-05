@@ -40,6 +40,25 @@ export const addProfileServicesError = (error) => {
   }
 };
 
+export const DELETE_PROFILE_SERVICE = 'DELETE_PROFILE_SERVICE';
+export const deleteProfileServices = (service) => {
+    console.log('deleteProfileService ran');
+    console.log(service);
+    return {
+        type: DELETE_PROFILE_SERVICE,
+        service
+    }
+};
+
+export const DELETE_PROFILE_SERVICE_ERROR = 'DELETE_PROFILE_SERVICE_ERROR';
+export const deleteProfileServiceError = (error) => {
+    console.log('deleteProfileServiceError ran');
+    return {
+        type: DELETE_PROFILE_SERVICE_ERROR,
+        error
+    }
+};
+
 
 export const FETCH_MYPROFILE_DETAILS_SUCCESS = 'FETCH_MYPROFILE_DETAILS_SUCCESS';
 export const fetchMyProfileDetailsSuccess = data => ({
@@ -76,7 +95,7 @@ export const fetchMyProfileDetails = () => (dispatch, getState) => {
 };
 
 export const postMyProfileService = (service) => (dispatch, getState) => {
-  console.log('fetchMyProfileDetails ran');
+  console.log('postMyProfileService ran');
   // const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/myprofile/service`, {
     method: 'POST',
@@ -99,5 +118,29 @@ export const postMyProfileService = (service) => (dispatch, getState) => {
       console.error(error);
       dispatch(addProfileServicesError(error));
     });
+};
+
+export const deleteMyProfileService = user_id => (dispatch, getState) => {
+    console.log('deleteMyProfileService ran', user_id);
+    // const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/api/myprofile/service/${user_id}`, {
+        method: 'DELETE',
+        headers: {
+            // Provide our auth token as credentials
+            // Authorization: `Bearer ${authToken}`,
+            'Content-type': 'application/json'
+        }
+    })
+    // .then(res => normalizeResponseErrors(res))
+    //     .then(res => res.json())
+        .then(data => {
+            // dispatch(fetchMyProfileDetailsSuccess(data))
+            const user_id = getState().auth.currentUser.user_id;
+            dispatch(fetchServices(user_id))
+        })
+        .catch(error => {
+            console.error(error);
+            dispatch(deleteProfileServiceError(error));
+        });
 };
 

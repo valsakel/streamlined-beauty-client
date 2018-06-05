@@ -76,7 +76,7 @@ class Profiles extends React.Component {
         <HeaderBar />
 
         <main className="main-dashboard">
-          <div>
+          <div className="main-dashboard-filter-form">
             <form>
               <label>
                 <select value={this.props.filteredLocation} onChange={this.handleChange}>

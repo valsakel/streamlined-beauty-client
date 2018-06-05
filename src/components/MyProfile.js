@@ -10,6 +10,7 @@ import {
   editProfileAccountStart,
   fetchMyProfileDetails,
   addProfileServices,
+  deleteMyProfileService,
   postMyProfileService,
   editProfileServicesStart,
   editProfileServicesEnd,
@@ -44,6 +45,13 @@ class MyProfile extends React.Component {
     // this.target.value !== 'Pick a service' && addProfileServices()
   };
 
+  onServiceDelete = (e) => {
+    e.preventDefault();
+    console.log('onServiceDelete ran', e.target.getAttribute('data-service-id'));
+    this.props.dispatch(deleteMyProfileService(e.target.getAttribute('data-service-id')));
+
+  };
+
   addNewService = (e) => {
     e.preventDefault();
     // this.props.dispatch(addProfileServices(service));
@@ -62,8 +70,6 @@ class MyProfile extends React.Component {
       <React.Fragment>
         <HeaderBar />
         <main className="main-dashboard">
-
-
           {this.props.editAccount
             ?
             <MyProfileAccountForm />
@@ -84,51 +90,96 @@ class MyProfile extends React.Component {
                     <p>{this.props.user.service_type}</p>
                     <p>{this.props.user.email}</p>
                   </div>
-                  <div className="my-profile-edit-btn-section">
-                    <button className="profile-edit-btn" type="button" onClick={() => this.props.dispatch(editProfileAccountStart())}>Edit</button>
-                  </div>
+                  {/*<div className="my-profile-edit-btn-section">*/}
+                    {/*<button className="profile-edit-btn" type="button" onClick={() => this.props.dispatch(editProfileAccountStart())}>Edit</button>*/}
+                  {/*</div>*/}
                 </main>
               </section>
               <section className="my-profile-services my-profile-account">
                 <h2>Services</h2>
                 <div className="my-profile-services-section">
                   <div>
-                    <h4 className="data-card-services-header">Service</h4>
+                    {/*<h4 className="data-card-services-header">Service</h4>*/}
                     <ul>
                       {this.props.userServices.map((service, ind) => (<li key={ind}>{service.service}</li>))}
                     </ul>
                   </div>
                   <div>
-                    <h4 className="data-card-services-header">
-                    Price
-                    </h4 >
+                    {/*<h4 className="data-card-services-header">Price</h4 >*/}
                     <ul>
                       {this.props.userServices.map((service, ind) => (<li key={ind}>${service.price}</li>))}
                     </ul>
                   </div>
+                    <div>
+                        {/*<h4 className="data-card-services-header">Price</h4 >*/}
+                        <ul>
+                            {this.props.userServices.map((service, ind) => (
+                                <button
+                                  className="my-profile-destroy-service"
+                                  onClick={this.onServiceDelete}
+                                  type="submit"
+                                  aria-label={`Click to delete ${service.service} service`}
+                                  data-service-id={service.id}
+                                  key={service.id}
+                                >
+                                </button>)
+                            )}
+                        </ul>
+                    </div>
 
                 </div>
                 {this.props.editServices
                   ?
-                  <form className="card add-form" onSubmit={(e) => this.onSubmit(e)}>
-                    <label>
-                      <select onChange={this.onServiceChange}>
+
+                  <div className="my-profile-add-services-form">
+                    <label className="my-profile-service-label">
+                      {/*Service*/}
+                      <select
+                        onChange={this.onServiceChange}
+                        className="my-profile-add-services-form-field"
+                      >
                         {this.props.filterServices.map((service, ind) => (
-                        <option value={service} key={ind}>{service}</option>
-                          ))}
+                          <option value={service} key={ind}>{service}</option>
+                        ))}
                       </select>
                     </label>
-                    <button onClick={this.addNewService}>Add</button>
+                    <label className="my-profile-price-label">
+                      {/*Price*/}
+                      <input
+                        id="my-profile-price-input"
+                        type="number"
+                        placeholder="$$$"
+                        className="my-profile-add-services-form-field"
+                      />
+                    </label>
+                    <button type="submit" onClick={this.addNewService}>Add</button>
                     <button type="button" onClick={() => this.props.dispatch(editProfileServicesEnd())}>
                       Cancel
                     </button>
-                  </form>
+                    {/*<form className="card add-form" onSubmit={(e) => this.onSubmit(e)}>*/}
+                      {/*<label>*/}
+                        {/*<select onChange={this.onServiceChange}>*/}
+                          {/*{this.props.filterServices.map((service, ind) => (*/}
+                            {/*<option value={service} key={ind}>{service}</option>*/}
+                          {/*))}*/}
+                        {/*</select>*/}
+                      {/*</label>*/}
+                      {/*<label>*/}
+                        {/*<input type="number"/>*/}
+                      {/*</label>*/}
+                      {/*<button type="button" onClick={this.addNewService}>Add</button>*/}
+                      {/*<button type="button" onClick={() => this.props.dispatch(editProfileServicesEnd())}>*/}
+                        {/*Cancel*/}
+                      {/*</button>*/}
+                    {/*</form>*/}
+                  </div>
+
                   :
                   <div>
                     <a
                       href="#"
                       onClick={() => this.props.dispatch(editProfileServicesStart())}
-                      className="my-profile-add-service-link"
+                      className="my-profile-add-services-link"
                       aria-label="Click to add a new service"
                     >
                       Add a service ...

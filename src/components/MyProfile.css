@@ -54,7 +54,7 @@
 .my-profile-services-section {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-top: 1em;
     text-align: center;
 
@@ -64,27 +64,104 @@
     padding-right: 10px;
     padding-left: 10px;
 
+
 }
 
-.my-profile-services-section li {
+.my-profile-services-section li,
+.my-profile-services-section button {
     list-style: none;
+    line-height: 1.3em;
+
 }
 
 .my-profile-services h2 {
     border-bottom: 1px solid #959595;
 }
 
-.my-profile-add-service-link {
+.my-profile-add-services-link {
     font-size: 1em;
     color: #ce1277;
     text-decoration: none;
 }
 
-.my-profile-add-service-link:visited,
-.my-profile-add-service-link:active {
+.my-profile-add-services-link:visited,
+.my-profile-add-services-link:active {
     color: #ce1277;
 }
 
-.my-profile-add-service-link:hover {
+.my-profile-add-services-link:hover {
     text-decoration: underline;
+}
+
+.my-profile-add-services-form {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    /*flex-direction: ;*/
+}
+
+.my-profile-add-services-form-field {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-size: calc(.7rem + .9vw);
+}
+
+.my-profile-add-services-form-field input {
+    font-size: calc(.5rem + .9vw);
+}
+
+.my-profile-service-label {
+    flex-basis: 45%;
+    font-size: calc(.7rem + .9vw);
+}
+
+.my-profile-price-label {
+    flex-basis: 15%;
+    font-size: calc(.7rem + .9vw);
+}
+
+#my-profile-price-input {
+    font-size: calc(.5rem + .9vw);
+    text-align: right;
+
+}
+
+.my-profile-destroy-service {
+    /*margin: 0;*/
+    display: list-item;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 100%;
+    vertical-align: baseline;
+    font-family: inherit;
+    /*color: inherit;*/
+    -webkit-appearance: none;
+    /*-ms-appearance: none;*/
+    /*-o-appearance: none;*/
+    -moz-appearance: none;
+    /*appearance: none;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 10px;*/
+    /*bottom: 0;*/
+    /*width: 40px;*/
+    /*height: 40px;*/
+    margin: auto 0;
+    /*font-size: 22px;*/
+    color: #d95693;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.my-profile-destroy-service:hover {
+    text-shadow: 0 0 1px #000, 0 0 8px rgba(206, 18, 119, 0.79);
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+.my-profile-destroy-service::after {
+    content: "✖";
+
 }

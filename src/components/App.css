@@ -32,6 +32,10 @@
   font-size: large;
 }
 
+button, select, input {
+  font-family: 'Raleway', sans-serif;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
