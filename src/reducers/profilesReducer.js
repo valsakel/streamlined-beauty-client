@@ -8,7 +8,7 @@ import {
 const initialState = {
   data: [],
   locations: ['Pick a location', 'Acworth', 'Cartersville', 'Kennesaw', 'Marietta', 'Smyrna'],
-  filteredLocation: '',
+  filteredLocation: 'Pick a location',
   filteredServiceType: 'Pick a pro',
   serviceTypes: ['Pick a pro', 'Barber', 'Cosmetologist', 'Esthetician', 'Make-Up Artist', 'Nail Specialist'],
   error: null
@@ -33,7 +33,14 @@ export default function reducer (state = initialState, action) {
   if (action.type === SET_PROFILE_LOCATION_FILTER) {
     return {
       ...state,
-      // error: action.error
+      filteredLocation: action.location
+    }
+  }
+
+  if (action.type === SET_PROFILE_SERVICE_FILTER) {
+    return {
+      ...state,
+      filteredServiceType: action.service
     }
   }
 

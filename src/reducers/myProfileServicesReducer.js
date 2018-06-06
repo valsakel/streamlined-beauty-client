@@ -7,7 +7,8 @@ import {
   EDIT_PROFILE_SERVICES_START,
   EDIT_PROFILE_SERVICES_END,
   SET_MY_PROFILE_PRICE_VAL_CHANGE,
-  CLEAR_PROFILE_PRICE_VAL_CHANGE
+  CLEAR_PROFILE_PRICE_VAL_CHANGE,
+  POST_PROFILE_SERVICE_ERROR
 }
   from '../actions/myProfileActions';
 
@@ -87,6 +88,13 @@ export default function reducer (state = initialState, action) {
       priceVal: 0,
       editServices: false,
       error: null
+    }
+  }
+
+  if (action.type === POST_PROFILE_SERVICE_ERROR) {
+    return {
+      ...state,
+      error: action.error
     }
   }
 

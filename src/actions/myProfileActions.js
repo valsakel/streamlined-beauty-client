@@ -24,8 +24,6 @@ export const editProfileServicesEnd = () => ({
 
 export const SET_PROFILE_SERVICE_VAL_CHANGE = 'SET_PROFILE_SERVICE_VAL_CHANGE';
 export const setMyProfileServiceValChange = (service) => {
-  console.log('setMyProfileServiceValChange ran');
-  console.log(service);
   return {
   type: SET_PROFILE_SERVICE_VAL_CHANGE,
   service
@@ -47,8 +45,6 @@ export const errorMyProfileServiceValChange = (error) => {
   }
 };
 
-
-
 export const SET_MY_PROFILE_PRICE_VAL_CHANGE = 'SET_MY_PROFILE_PRICE_VAL_CHANGE';
 export const setMyProfilePriceValChange = price => ({
   type: SET_MY_PROFILE_PRICE_VAL_CHANGE,
@@ -59,8 +55,6 @@ export const CLEAR_PROFILE_PRICE_VAL_CHANGE = 'CLEAR_PROFILE_SERVICE_VAL_CHANGE'
 export const clearMyProfilePriceValChange = () => ({
   type: CLEAR_PROFILE_PRICE_VAL_CHANGE
 });
-
-
 
 export const DELETE_PROFILE_SERVICE = 'DELETE_PROFILE_SERVICE';
 export const deleteProfileServices = (service) => {
@@ -94,8 +88,11 @@ export const fetchMyProfileDetailsError = error => ({
   error
 });
 
-
-
+export const POST_PROFILE_SERVICE_ERROR = 'POST_PROFILE_SERVICE_ERROR';
+export const postProfileServiceError = error => ({
+  type: POST_PROFILE_SERVICE_ERROR,
+  error
+});
 
 
 export const fetchMyProfileDetails = () => (dispatch, getState) => {
@@ -137,12 +134,11 @@ export const postMyProfileService = (service) => (dispatch, getState) => {
     .then(data => {
       console.log('SERVICE', data);
       // dispatch(fetchMyProfileDetailsSuccess(data))
-      const user_id = getState().auth.currentUser.user_id;
-      dispatch(fetchServices(user_id))
+      dispatch(fetchServices(service.user_id))
     })
     .catch(error => {
       console.error(error);
-      // dispatch((error));
+      dispatch(postProfileServiceError(error));
     });
 };
 

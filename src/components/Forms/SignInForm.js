@@ -9,17 +9,17 @@ import Fields from "./Fields";
 import { login } from '../../actions/auth';
 import {connect} from "react-redux";
 
-const passwordLength = length({min: 10, max: 72});
+const passwordLength = length({min: 8, max: 72});
 
 
 class SignInForm extends React.Component {
   onSubmit = (values) => {
-    console.log(`SignInForm's onSubmit ran`, values);
+    console.log(`SignInForm's onSubmit ran`, this.props);
     return this.props.dispatch(login(values.emailAddress, values.password));
   };
 
   render() {
-    // If we are logged in (which happens automatically when registration
+    // If user logged in (which happens automatically when registration
     // is successful) redirect to the user's dashboard
     if (this.props.isAuthenticated) {
       console.log(this.props.user.role);
@@ -32,6 +32,9 @@ class SignInForm extends React.Component {
     return (
       <React.Fragment>
         <HeaderBar />
+        {this.props.error &&
+        <div className="error-bar" aria-live="polite">{this.props.error}</div>
+        }
         <div className="signin-form-wrapper">
             <div className="signin-form">
               <h2 className="signin-form-header">Account Sign In</h2>
@@ -85,7 +88,8 @@ SignInForm = connect(
   state => {
     return {
       isAuthenticated: state.auth.currentUser !== null,
-      user: state.auth.currentUser
+      user: state.auth.currentUser,
+      // error: state.auth.error
     }
   }
 )(SignInForm);

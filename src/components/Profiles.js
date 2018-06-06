@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import { Field } from 'redux-form';
 
+import { setProfileLocationFilter, setProfileServiceFilter } from '../actions/profiles'
+
 import HeaderBar from './HeaderBar';
 
 
@@ -22,8 +24,15 @@ class Profiles extends React.Component {
 
   onLocationChange = e => {
     console.log('onLocationChange ran', e.target.value);
+    this.props.dispatch(setProfileLocationFilter(e.target.value))
     // this.setState({value: event.target.value});
   };
+
+  onServiceChange = e => {
+    console.log('onServiceChange ran', e.target.value);
+    this.props.dispatch(setProfileServiceFilter(e.target.value))
+  };
+
 
   handleSubmit = event => {
     console.log('handleSubmit from Profiles ran');
@@ -34,7 +43,11 @@ class Profiles extends React.Component {
   render() {
     console.log(this.props);
     console.log(this.props.data);
-    const users = this.props.data.map((user, ind) => (
+    const filterByLocation = (user) => {
+      return user.location === this.props.filteredLocation || this.props.filteredLocation === 'Pick a location';
+    };
+
+    const users = this.props.data.filter(filterByLocation).map((user, ind) => (
         <section className="data-card-section" key={ind}>
           <article className="data-card-article">
             <header className="data-card-header">
@@ -74,7 +87,7 @@ class Profiles extends React.Component {
             <form>
               <label>
                 <select onChange={this.onLocationChange}>
-                  <option value="" selected>select your beverage</option>
+                  {/*<option value="" selected>select your beverage</option>*/}
                   {this.props.locations.map((location, ind) => (
                     <option value={location} key={ind}>{location}</option>
                   ))}

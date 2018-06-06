@@ -61,33 +61,21 @@ export const login = (email, password) => dispatch => {
     .then(res => res.json())
     .then(({authToken}) => {
       storeAuthInfo(authToken, dispatch);
-      // const decodedToken = jwtDecode(authToken);
-      // dispatch(setAuthToken(authToken));
-      // console.log(decodedToken.user);
-      // dispatch(authSuccess(decodedToken.user));
-
     })
-
     .then(res => console.log(res))
-    .catch(err => {
-      // const message =
-      //   err.status === 401
-      //     ? err.message
-      //     : 'Unable to login, please try again';
-      dispatch(authError(err));
-      // Could not authenticate, so return a SubmissionError for Redux
-      // Form
+    .catch(error => {
+      console.log('login ERROR', error);
+      dispatch(authError(error));
+      // Could not authenticate, return a SubmissionError for Redux Form
       return Promise.reject(
         new SubmissionError({
-          _error: err.message
+          _error: error.message
         })
       );
-
 
       // if (err.status === 401) {
       //   dispatch(authError(err.message));
       // }
-      // console.log('hello from server');
       // console.log(err.status);
     })
 };

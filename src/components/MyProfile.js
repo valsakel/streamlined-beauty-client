@@ -90,7 +90,7 @@ class MyProfile extends React.Component {
       <React.Fragment>
         <HeaderBar />
         {this.props.error &&
-        <div className="error-bar">{this.props.error}</div>
+        <div className="error-bar" aria-live="polite">{this.props.error}</div>
         }
         <main className="main-dashboard">
           {this.props.editAccount

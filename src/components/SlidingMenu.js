@@ -8,7 +8,7 @@ import "./SlidingMenu.css";
 
 class SlidingMenu extends React.Component {
 
-  toSignOut = () => {
+  onSignOut = () => {
     this.props.dispatch(clearAuth());
     clearAuthToken();
   };
@@ -29,7 +29,7 @@ class SlidingMenu extends React.Component {
         <Link to="/">How it works</Link>
         {this.props.isSignedIn ? (
           <React.Fragment>
-            <Link to="/signin" onClick={this.toSignOut}>Sign Out</Link>
+            <Link to="/signin" onClick={this.onSignOut}>Sign Out</Link>
             <Link to="/profiles/myprofile">My Profile</Link>
           </React.Fragment>
         ) : (

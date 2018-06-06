@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reduxForm, Field, focus, formValueSelector } from 'redux-form';
 import HeaderBar from '../HeaderBar';
@@ -16,22 +16,30 @@ const locations = ['Pick a location', 'Kennesaw', 'Marietta', 'Acworth'];
 
 class SignUpForm extends React.Component {
   onSubmit = (values) => {
-    console.log(values);
+    console.log(this.props);
     const {full_name, email, password, location, role, service_type = ''} = values;
     const user = {full_name, email, password, location, role, service_type};
-
-    return this.props.dispatch(
-
-      registerUser(user)
-    );
+    return this.props.dispatch(registerUser(user));
   };
 
   render() {
-    // const userProRole = this.props;
-    console.log(this.props.roleValue);
+    // If user logged in (which happens automatically when registration
+    // is successful) redirect to the user's dashboard
+    if (this.props.isAuthenticated) {
+      console.log(this.props.user.role);
+
+      if (this.props.user.role === 'pro') {
+        return <Redirect to="/profiles/myprofile"/>;
+      }
+      return <Redirect to="/profiles"/>
+    }
+
     return (
       <React.Fragment>
         <HeaderBar />
+        {this.props.error &&
+        <div className="error-bar" aria-live="polite">{this.props.error}</div>
+        }
         <div className="signin-form-wrapper">
           <div className="signin-form">
             <h2 className="signin-form-header">Account Sign Up</h2>
@@ -72,7 +80,6 @@ class SignUpForm extends React.Component {
                 component={Fields}
                 validate={required}
               >
-                {/*<option>Select location</option>*/}
                 {locations.map((location, ind) =>
                   <option key={ind} value={location}>{location}</option>
                 )}
@@ -95,8 +102,6 @@ class SignUpForm extends React.Component {
                 type="radio"
                 value="pro"
                 validate={required}
-
-
               />
               {(this.props.roleValue === 'pro') &&
               <Field
@@ -125,16 +130,18 @@ class SignUpForm extends React.Component {
           </div>
         </div>
       </React.Fragment>
-
     )
   }
 }
 
-
-
+function scroll () {
+  return window.scrollTo( 0, 1000 );
+}
 
 SignUpForm = reduxForm({
-  form: 'signup'
+  form: 'signup',
+  onSubmitFail: (errors, dispatch) =>
+    dispatch(focus('signup', 'email'))
 })(SignUpForm);
 
 const selector = formValueSelector('signup');
@@ -145,13 +152,11 @@ SignUpForm = connect(
   state => {
     const roleValue = selector(state, 'role');
     return {
-      roleValue
+      roleValue,
+      isAuthenticated: state.auth.currentUser !== null,
+      user: state.auth.currentUser
     }
   }
 )(SignUpForm);
 
 export default SignUpForm;
-
-// export default reduxForm({
-//   form: 'signup'
-// })(SignUpForm);
