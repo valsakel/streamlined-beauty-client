@@ -1,9 +1,112 @@
 .container {
     width: 100vw;
     height: 100vh;
-    background-image: url('../images/black_white_orchid.jpg');
+    /*background-image: url('../images/black_white_orchid.jpg');*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+
+    background: linear-gradient(to right bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('../images/black_white_orchid.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
+}
+
+.landing-page-main-section {
+    position: relative;
+    top: 80px;
+    margin-bottom: 4em;
+
+}
+
+.landing-page-hero-section {
+    display: flex;
+    flex-direction: column;
+    /*flex-flow: wrap;*/
+    align-items: center;
+    justify-content: center;
+    /*margin: 1em;*/
+    /*height: 100vh;*/
+    height: calc(100vh - 80px);
+}
+
+.landing-page-welcome-header {
+    color: white;
+    font-size: calc(1.5em + .5vw);
+    text-align: center;
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+.landing-page-get-started-link {
+    display: inline-block;
+    height: 40px;
+    margin: 1em;
+    /*width: */
+    color: #ffffff;
+    background-color: #ce1277;
+    border: 1px solid #ce1277;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+
+
+    min-width: 130px;
+    max-width: 200px;
+}
+
+.landing-page-how-works-link {
+    display: inline-block;
+    height: 40px;
+    margin: 1em;
+
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    /*color: #ce1277;*/
+    /*background-color: none;*/
+    /*border: 1px solid #ce1277;*/
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+
+
+    min-width: 130px;
+    max-width: 200px;
+}
+
+.landing-page-how-works-section * {
+    margin: 1em;
+
+    padding: 0;
+}
+
+.landing-page-how-works-section {
+    /*margin: 1em;*/
+
+}
+
+@media only screen and (min-width: 450px) {
+
+    .landing-page-hero-section {
+        margin: 0 auto;
+        width: 70vw;
+        /*flex-direction: row;*/
+        flex-wrap: wrap;
+    }
+
+    .landing-page-welcome-header {
+        /*order: -1;*/
+        /*flex: 1 0 100%;*/
+    }
 }
