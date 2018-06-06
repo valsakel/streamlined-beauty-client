@@ -14,18 +14,14 @@ import {required} from "./Forms/validators";
 import placeholder_person from '../images/placeholder_person.jpg';
 
 
-const locations = ['Select a location', 'Kennesaw', 'Marietta', 'Acworth'];
-
-
 class Profiles extends React.Component {
   componentDidMount() {
     console.log('COMPONENT DID MOUNT');
     this.props.dispatch(fetchProfiles());
   }
 
-
-  handleChange = event => {
-    console.log('hadnleChange from Profiles ran');
+  onLocationChange = e => {
+    console.log('onLocationChange ran', e.target.value);
     // this.setState({value: event.target.value});
   };
 
@@ -44,15 +40,12 @@ class Profiles extends React.Component {
             <header className="data-card-header">
               <div className="data-card-img">
                 <img src={placeholder_person} className="data-user-img" alt="placeholder clip art" />
-
               </div>
               <div className="data-card-info">
                 <h3>{user.full_name}</h3>
                 <p>{user.service_type}</p>
                 <p>{user.location}</p>
-
               </div>
-
             </header>
             <section>
 
@@ -73,20 +66,22 @@ class Profiles extends React.Component {
     );
     return (
       <React.Fragment>
+
         <HeaderBar />
 
         <main className="main-dashboard">
           <div className="main-dashboard-filter-form">
             <form>
               <label>
-                <select value={this.props.filteredLocation} onChange={this.handleChange}>
+                <select onChange={this.onLocationChange}>
+                  <option value="" selected>select your beverage</option>
                   {this.props.locations.map((location, ind) => (
                     <option value={location} key={ind}>{location}</option>
                   ))}
                 </select>
               </label>
               <label>
-                <select value={this.props.filteredServiceType} onChange={this.handleChange}>
+                <select onChange={this.onServiceChange}>
                   {this.props.serviceTypes.map((service, ind) => (
                     <option value={service} key={ind}>{service}</option>
                   ))}

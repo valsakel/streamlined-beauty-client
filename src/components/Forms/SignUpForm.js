@@ -12,7 +12,7 @@ import './forms.css';
 const passwordLength = length({min: 8, max: 72});
 // const matchesPassword = matches('password');
 
-const locations = ['Select a location', 'Kennesaw', 'Marietta', 'Acworth'];
+const locations = ['Pick a location', 'Kennesaw', 'Marietta', 'Acworth'];
 
 class SignUpForm extends React.Component {
   onSubmit = (values) => {

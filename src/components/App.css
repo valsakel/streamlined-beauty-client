@@ -36,6 +36,24 @@ button, select, input {
   font-family: 'Raleway', sans-serif;
 }
 
+.error-bar {
+  position: relative;
+  top: 80px;
+  height: 2em;
+  color: #D8000C;
+  background-color: #FFBABA;
+  /*margin:10px 22px;*/
+  font-size: 1em;
+  vertical-align:middle;
+  line-height: 2em;
+
+}
+
+.error-bar::before {
+  padding: 1.5em;
+  content: "x";
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

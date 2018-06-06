@@ -35,7 +35,6 @@ class Profile extends React.Component {
           > &larr; &ensp; Back to the board</Link>
         </div>
 
-
         <section className="data-card-section">
           <a
             href={`mailto:${this.props.user.email}?subject=Schedule%20an%20appointment`}
@@ -76,8 +75,6 @@ class Profile extends React.Component {
                   </ul>
                 </div>
               </div>
-
-
 
             </section>
             <footer>

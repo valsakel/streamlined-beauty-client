@@ -1,4 +1,4 @@
-export const required = value => !value || value === 'Select location' ? 'Required field' : undefined;
+export const required = value => !value || value === 'Pick a location' ? 'Required field' : undefined;
 
 export const nonEmpty = value => !value.trim() ? "Field can't be blank" : undefined;
 
@@ -23,3 +23,5 @@ export const matches = field => (value, allValues) =>
   field in allValues && value.trim() === allValues[field].trim()
     ? undefined
     : 'Does not match';
+
+export const requireService = value => value === 'Pick a service' ? 'Required field' : undefined;

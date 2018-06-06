@@ -1,5 +1,6 @@
 import { API_BASE_URL } from '../config';
 import { fetchServices } from './profile';
+import normalizeErrors from './utils';
 
 export const EDIT_PROFILE_ACCOUNT_START = 'EDIT_PROFILE_ACCOUNT_START';
 export const editProfileAccountStart = () => ({
@@ -21,24 +22,45 @@ export const editProfileServicesEnd = () => ({
   type: EDIT_PROFILE_SERVICES_END
 });
 
-export const ADD_PROFILE_SERVICES = 'ADD_PROFILE_SERVICES';
-export const addProfileServices = (service) => {
-  console.log('addProfileServices ran');
+export const SET_PROFILE_SERVICE_VAL_CHANGE = 'SET_PROFILE_SERVICE_VAL_CHANGE';
+export const setMyProfileServiceValChange = (service) => {
+  console.log('setMyProfileServiceValChange ran');
   console.log(service);
   return {
-  type: ADD_PROFILE_SERVICES,
+  type: SET_PROFILE_SERVICE_VAL_CHANGE,
   service
 }
 };
 
-export const ADD_PROFILE_SERVICES_ERROR = 'ADD_PROFILE_SERVICES_ERROR';
-export const addProfileServicesError = (error) => {
-  console.log('addProfileServicesError ran');
+export const CLEAR_PROFILE_SERVICE_VAL_CHANGE = 'CLEAR_PROFILE_SERVICE_VAL_CHANGE';
+export const clearMyProfileServiceValChange = () => {
   return {
-    type: ADD_PROFILE_SERVICES_ERROR,
+    type: CLEAR_PROFILE_SERVICE_VAL_CHANGE
+  }
+};
+
+export const ERROR_PROFILE_SERVICE_VAL_CHANGE = 'ERROR_PROFILE_SERVICE_VAL_CHANGE';
+export const errorMyProfileServiceValChange = (error) => {
+  return {
+    type: ERROR_PROFILE_SERVICE_VAL_CHANGE,
     error
   }
 };
+
+
+
+export const SET_MY_PROFILE_PRICE_VAL_CHANGE = 'SET_MY_PROFILE_PRICE_VAL_CHANGE';
+export const setMyProfilePriceValChange = price => ({
+  type: SET_MY_PROFILE_PRICE_VAL_CHANGE,
+  price
+});
+
+export const CLEAR_PROFILE_PRICE_VAL_CHANGE = 'CLEAR_PROFILE_SERVICE_VAL_CHANGE';
+export const clearMyProfilePriceValChange = () => ({
+  type: CLEAR_PROFILE_PRICE_VAL_CHANGE
+});
+
+
 
 export const DELETE_PROFILE_SERVICE = 'DELETE_PROFILE_SERVICE';
 export const deleteProfileServices = (service) => {
@@ -71,6 +93,10 @@ export const fetchMyProfileDetailsError = error => ({
   type: FETCH_MYPROFILE_DETAILS_ERROR,
   error
 });
+
+
+
+
 
 export const fetchMyProfileDetails = () => (dispatch, getState) => {
   console.log('fetchMyProfileDetails ran');
@@ -106,7 +132,7 @@ export const postMyProfileService = (service) => (dispatch, getState) => {
     },
     body: JSON.stringify(service)
   })
-  // .then(res => normalizeResponseErrors(res))
+  .then(res => normalizeErrors(res))
     .then(res => res.json())
     .then(data => {
       console.log('SERVICE', data);
@@ -116,7 +142,7 @@ export const postMyProfileService = (service) => (dispatch, getState) => {
     })
     .catch(error => {
       console.error(error);
-      dispatch(addProfileServicesError(error));
+      // dispatch((error));
     });
 };
 
