@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "../config";
+import normalizeErrors from './utils';
 
 export const POPULATE_PROFILES_SUCCESS = 'POPULATE_PROFILES_SUCCESS';
 export const populateProfilesSuccess = data => ({
@@ -33,15 +34,15 @@ export const fetchProfiles = (location) => (dispatch, getState) => {
       // Authorization: `Bearer ${authToken}`
     }
   })
-    // .then(res => normalizeResponseErrors(res))
+    .then(res => normalizeErrors(res))
     .then(res => res.json())
     .then(data => {
       console.log(data);
       dispatch(populateProfilesSuccess(data))
     })
     .catch(error => {
-      console.error(error);
-      dispatch(populateProfilesError(error));
+      const message ='Something went wrong. Please try again later';
+      dispatch(populateProfilesError(message));
     });
 };
 

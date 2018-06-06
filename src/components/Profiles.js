@@ -33,7 +33,6 @@ class Profiles extends React.Component {
     this.props.dispatch(setProfileServiceFilter(e.target.value))
   };
 
-
   handleSubmit = event => {
     console.log('handleSubmit from Profiles ran');
     // alert('Your favorite flavor is: ' + this.state.value);
@@ -43,11 +42,15 @@ class Profiles extends React.Component {
   render() {
     console.log(this.props);
     console.log(this.props.data);
-    const filterByLocation = (user) => {
+    const filterByLocation = user => {
       return user.location === this.props.filteredLocation || this.props.filteredLocation === 'Pick a location';
     };
 
-    const users = this.props.data.filter(filterByLocation).map((user, ind) => (
+    const filterByService = user => {
+      return user.service_type === this.props.filteredServiceType || this.props.filteredServiceType === 'Pick a pro';
+    };
+
+    const users = this.props.data.filter(filterByLocation).filter(filterByService).map((user, ind) => (
         <section className="data-card-section" key={ind}>
           <article className="data-card-article">
             <header className="data-card-header">
@@ -79,9 +82,10 @@ class Profiles extends React.Component {
     );
     return (
       <React.Fragment>
-
         <HeaderBar />
-
+        {this.props.error &&
+        <div className="error-bar" aria-live="polite">{this.props.error}</div>
+        }
         <main className="main-dashboard">
           <div className="main-dashboard-filter-form">
             <form>
@@ -115,7 +119,8 @@ const mapStateToProps = state => {
     locations: state.profiles.locations,
     filteredLocation: state.profiles.filteredLocation,
     serviceTypes: state.profiles.serviceTypes,
-    filteredServiceType: state.profiles.filteredServiceType
+    filteredServiceType: state.profiles.filteredServiceType,
+    error: state.profiles.error
   }
 };
 

@@ -24,6 +24,7 @@ export default function reducer (state = initialState, action) {
   }
 
   if (action.type === POPULATE_PROFILES_ERROR) {
+    console.log('POPULATE_PROFILES_ERROR', action.error);
     return {
       ...state,
       error: action.error
