@@ -33,7 +33,7 @@ class SignInForm extends React.Component {
       <React.Fragment>
         <HeaderBar />
         {this.props.error &&
-        <div className="error-bar" aria-live="polite">{this.props.error}</div>
+        <div className="error-bar" aria-live="polite" role="alert">{this.props.error}</div>
         }
         <div className="signin-form-wrapper">
             <div className="signin-form">

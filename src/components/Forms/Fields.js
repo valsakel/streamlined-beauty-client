@@ -26,7 +26,7 @@ const Fields = props => {
       */}
       {props.meta.error &&
         props.meta.touched &&
-          <div className="form-error" aria-live="polite">{props.meta.error}</div>}
+          <div className="form-error" aria-live="polite" role="alert">{props.meta.error}</div>}
     </div>
     // </React.Fragment>
   );

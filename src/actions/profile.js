@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "../config";
+import normalizeErrors from './utils';
 
 export const FETCH_PROFILE_DETAILS_SUCCESS = 'FETCH_PROFILE_DETAILS_SUCCESS';
 export const fetchProfileDetailsSuccess = data => ({
@@ -35,15 +36,15 @@ export const fetchProfileDetails = (userId) => (dispatch, getState) => {
       // Authorization: `Bearer ${authToken}`
     }
   })
-  // .then(res => normalizeResponseErrors(res))
+    .then(res => normalizeErrors(res))
     .then(res => res.json())
     .then(data => {
       console.log(data);
       dispatch(fetchProfileDetailsSuccess(data))
     })
-    .catch(error => {
-      console.error(error);
-      dispatch(fetchProfileDetailsError(error));
+    .catch(() => {
+      const message ='Was not able to load profile details. Please try again later';
+      dispatch(fetchProfileDetailsError(message));
     });
 };
 
@@ -62,9 +63,9 @@ export const fetchServices = (user_id) => (dispatch, getState) => {
       console.log(data);
       dispatch(fetchServicesSuccess(data))
     })
-    .catch(error => {
-      console.error(error);
-      dispatch(fetchServicesError(error));
+    .catch(() => {
+      const message ='Was not able to load services. Please try again later';
+      dispatch(fetchServicesError(message));
     });
 };
 

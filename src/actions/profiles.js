@@ -52,7 +52,7 @@ export const fetchProfiles = (location) => (dispatch, getState) => {
       console.log(data);
       dispatch(populateProfilesSuccess(data))
     })
-    .catch(error => {
+    .catch(() => {
       const message ='Something went wrong. Please try again later';
       dispatch(populateProfilesError(message));
     });

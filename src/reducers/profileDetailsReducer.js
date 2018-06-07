@@ -1,4 +1,8 @@
-import { FETCH_PROFILE_DETAILS_SUCCESS, FETCH_PROFILE_DETAILS_ERROR } from '../actions/profile';
+import {
+  FETCH_PROFILE_DETAILS_SUCCESS,
+  FETCH_PROFILE_DETAILS_ERROR
+}
+from '../actions/profile';
 
 const initialState = {
   data: {},
