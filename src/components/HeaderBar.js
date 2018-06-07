@@ -30,36 +30,38 @@ class HeaderBar extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <SlidingMenu handleClick={this.handleClick}
-                     menuVisibility={this.state.visible}/>
-        <header className="header-bar">
+        <header className="header-bar" role="banner">
           <div>
             <Link
               to="/"
               className="header-link"
             >
-              {/*<h3>*/}
                 Streamlined
               <span>Beauty</span>
-              {/*</h3>*/}
             </Link>
-
           </div>
-          <nav>
+          <nav role="navigation">
             <button
               id="menuButton"
+              type="button"
               onClick={this.handleClick}
+              aria-expanded={this.state.visible}
+              aria-label="MENU"
+              aria-controls="overlay-menu"
             >
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
           </nav>
+          <SlidingMenu
+            handleClick={this.handleClick}
+            visibility={this.state.visible}
+          />
         </header>
       </React.Fragment>
     )
   }
-
-};
+}
 
 export default HeaderBar;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import {reduxForm, Field, formValueSelector} from 'redux-form';
+import {reduxForm, Field, formValueSelector, focus} from 'redux-form';
 import HeaderBar from '../HeaderBar';
 
 import './forms.css';
@@ -60,12 +60,14 @@ class SignInForm extends React.Component {
                 validate={[required, isTrimmed, passwordLength]}
                 autocomplete="off"
               />
-              <button
-                className="form-btn"
-                type="submit"
-              >
-                Sign In
-              </button>
+              <div className="form-field">
+                <button
+                  className="form-btn"
+                  type="submit"
+                >
+                  Sign In
+                </button>
+              </div>
             </form>
             <p
               className="account-message">
@@ -81,7 +83,9 @@ class SignInForm extends React.Component {
 
 
 SignInForm = reduxForm({
-  form: 'signin'
+  form: 'signin',
+  onSubmitFail: (errors, dispatch) =>
+    dispatch(focus('signin', 'email'))
 })(SignInForm);
 
 SignInForm = connect(

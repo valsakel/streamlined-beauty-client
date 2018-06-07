@@ -16,7 +16,7 @@ class SlidingMenu extends React.Component {
   render() {
     let visibility = "hide";
 
-    if (this.props.menuVisibility) {
+    if (this.props.visibility) {
       visibility = "show";
     }
 

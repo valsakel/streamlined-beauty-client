@@ -13,6 +13,7 @@ const Fields = props => {
         className={(props.meta.error && props.meta.touched) ? 'error-border' : 'placeholder-class'}
         type={props.type}
         value={props.value}
+        aria-required="true"
         // placeholder={props.label}
         {...props.input}
       >
@@ -29,6 +30,6 @@ const Fields = props => {
     </div>
     // </React.Fragment>
   );
-}
+};
 
 export default Fields;

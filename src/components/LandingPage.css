@@ -10,7 +10,29 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
 
+.landing-page-skip-link a {
+    font-size: 12px;
+    clip: rect(0,0,0,0);
+    display: inline-block;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+
+.landing-page-skip-link a:focus {
+    margin-left: 1.7rem;
+    clip: auto;
+    color: #fff;
+    height: auto;
+    overflow: visible;
+    position: absolute;
+    width: auto;
+    top: 0;
+    z-index: 10000;
 }
 
 .landing-page-main-section {
@@ -37,6 +59,14 @@
     text-align: center;
     margin-right: 1em;
     margin-left: 1em;
+}
+
+.landing-page-welcome-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .landing-page-get-started-link {
@@ -89,6 +119,13 @@
     margin: 1em;
 
     padding: 0;
+    list-style: none;
+}
+
+.landing-page-how-works-section li::before {
+    content: "•";
+    color: #ce1277;
+    padding-right: 1em;
 }
 
 .landing-page-how-works-section {
@@ -103,6 +140,16 @@
         width: 70vw;
         /*flex-direction: row;*/
         flex-wrap: wrap;
+    }
+
+    #landing-page-how-works-wrapper {
+        display: flex;
+        max-width: 960px;
+        margin: 0 auto
+    }
+
+    .landing-page-how-works-section {
+        flex: 1 1 0
     }
 
     .landing-page-welcome-header {

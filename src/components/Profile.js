@@ -27,13 +27,14 @@ class Profile extends React.Component {
     return (
       <React.Fragment>
         <HeaderBar />
-        <main className="main-dashboard">
         <div className="return-link-section">
           <Link
             to="/profiles"
             aria-label="Click to return to the board"
           > &larr; &ensp; Back to the board</Link>
         </div>
+        <main className="main-dashboard">
+
 
         <section className="data-card-section">
           <a

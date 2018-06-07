@@ -6,20 +6,19 @@ import HeaderBar from './HeaderBar';
 import './LandingPage.css';
 
 const LandingPage = (props) => {
-  // if (props.signedIn) {
-  //   return <Redirect to="/profiles"/>
-  // }
-
   return (
     <React.Fragment>
       <div className="container">
+        <div className="landing-page-skip-link">
+          <a href="#welcome">Skip to main content</a>
+        </div>
         <HeaderBar />
-        <main className="landing-page-main-section">
+        <main className="landing-page-main-section" role="main">
           <section className="landing-page-hero-section">
-            <h2 className="landing-page-welcome-header">
+            <h2 id="welcome" className="landing-page-welcome-header">
               You came to the place where freelance beauty professionals and consumers connect in metro Atlanta
             </h2>
-            <div>
+            <div className="landing-page-welcome-footer">
               <Link
                 to={`/signup`}
                 className="landing-page-get-started-link"
@@ -36,14 +35,14 @@ const LandingPage = (props) => {
               </a>
             </div>
           </section>
-          <section id="landing-page-how-works-wrapper" name="landing-page-how-works-wrapper">
+          <section id="landing-page-how-works-wrapper">
             <div className="landing-page-how-works-section">
               <h3>If you're hiring</h3>
               <div>On SB you will find a list of local freelance
                 beauty professionals that provide services
                 to people within a comfort of their own
                 place.</div>
-              <ol>
+              <ul>
                 <li>
                   Start by signing up with SB
                 </li>
@@ -58,7 +57,7 @@ const LandingPage = (props) => {
                 <li>
                   Get ready and enjoy
                 </li>
-              </ol>
+              </ul>
             </div>
             <div className="landing-page-how-works-section">
               <h3>If you're freelancing</h3>
@@ -79,7 +78,6 @@ const LandingPage = (props) => {
             </div>
           </section>
         </main>
-
       </div>
     </React.Fragment>
   )

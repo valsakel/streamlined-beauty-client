@@ -1,4 +1,7 @@
-export const required = value => !value || value === 'Pick a location' ? 'Required field' : undefined;
+export const required = value =>
+  !value || (value === 'Pick a location' || value === 'Pick a pro')
+    ? 'Required field'
+    : undefined;
 
 export const nonEmpty = value => !value.trim() ? "Field can't be blank" : undefined;
 

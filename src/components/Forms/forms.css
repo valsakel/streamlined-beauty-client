@@ -62,7 +62,7 @@ input[type="radio"]:focus {
     color: #ffffff;
     background-color: #ce1277;
     border: 1px solid #ce1277;
-    margin-top: 2rem;
+    margin-top: 1em;
     padding: 1rem;
     width: 100%;
     outline: 0;
@@ -102,19 +102,15 @@ input[type="radio"]:focus {
 
 
 .signin-form-wrapper {
-    /*display: flex;*/
-    /*flex-direction: column;*/
+    position: relative;
+    top: 80px;
     max-width: 500px;
-    /*min-width: 340px;*/
     padding: 1em;
-    margin: 0 auto;
-    /*margin: 30px;*/
-
+    margin: 2em auto;
 }
 
 .signin-form {
-    position: relative;
-    top: 80px;
+
     background-color: #ffffff;
     padding: 20px;
 
@@ -136,6 +132,30 @@ input[type="radio"]:focus {
 .form-field > [form=radio] {
     color: #ce1277;
     display: inline;
+}
+
+.form-field-signup-btns {
+    display: flex;
+
+}
+
+.form-field-signup-btns button {
+    width: 40%;
+    margin: 0 auto;
+    justify-content: space-evenly;
+}
+
+.form-field-signup-btns button:last-child {
+    background: none;
+    color: #ce1277;
+}
+
+.form-field-signup-btns button:last-child:hover,
+.form-field-signup-btns button:last-child:focus {
+    background: #ce1277;
+    color: #FFFFFF;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
 }
 
 

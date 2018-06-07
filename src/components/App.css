@@ -1,15 +1,14 @@
 .App {
-  /*text-align: center;*/
   background-color: #edeff2;
-  /*font-family: Lato, serif;*/
   font-family: 'Raleway', sans-serif;
-  font-size: calc(.7rem + .9vw);
+  font-size: calc(.5rem + .9vw);
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   top: 0;
   overflow: auto;
+  min-width: 360px;
 }
 
 .App-logo {
@@ -34,6 +33,17 @@
 
 button, select, input {
   font-family: 'Raleway', sans-serif;
+  font-size: calc(.5rem + .9vw);
+}
+
+select {
+  text-transform: none;
+}
+
+input[type="password"]:focus,
+button[type="submit"]:focus,
+button[type="button"]:focus {
+
 }
 
 .error-bar {

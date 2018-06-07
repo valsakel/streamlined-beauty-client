@@ -43,8 +43,16 @@
     border: 1px solid transparent;
     width: 40px;
     height: 40px;
-    outline: none;
     transition: all .2s cubic-bezier(0, 1.26, .8, 1.28);
+}
+
+#menuButton:focus {
+    /* Restore focus behavior in non-webkit browsers like Firefox */
+    -moz-outline-radius: 3px;
+    outline: dotted 1px #FFFFFF;
+    /* Preseve default focus behavior in webkit browsers */
+    outline: auto 5px -webkit-focus-ring-color;
+    box-shadow: 0;
 }
 
 #menuButton:hover {

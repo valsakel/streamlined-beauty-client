@@ -1,6 +1,10 @@
 .return-link-section {
     padding: 20px;
     background-color: #ffffff;
+    /*flex: 1 0 100%;*/
+    position: relative;
+    top: 80px;
+
 
 }
 

@@ -18,12 +18,9 @@ class App extends Component {
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/profiles" component={Profiles}/>
         <Route exact path="/profiles/details/:user_id" component={Profile}/>
-
         <Route exact path="/profiles/myprofile" component={MyProfile}/>
         <Route exact path="/signup" component={SignUpPage} />
         <Route exact path="/signin" component={SignInPage} />
-        {/*<Route exact path="/menu" component={NavbarCollapseMenu} />*/}
-        {/*<Route exact path="/dashboard/:id" component={Dashboard} />*/}
       </div>
     );
   }

@@ -80,9 +80,9 @@ class SignUpForm extends React.Component {
                 component={Fields}
                 validate={required}
               >
-                {locations.map((location, ind) =>
-                  <option key={ind} value={location}>{location}</option>
-                )}
+                {this.props.locations.map((location, ind) =>
+                  <option key={ind} value={location}>{location}</option>)
+                }
               </Field>
               <Field
                 id="roleUserField"
@@ -92,7 +92,6 @@ class SignUpForm extends React.Component {
                 type="radio"
                 value="user"
                 validate={required}
-
               />
               <Field
                 id="roleProField"
@@ -104,22 +103,36 @@ class SignUpForm extends React.Component {
                 validate={required}
               />
               {(this.props.roleValue === 'pro') &&
-              <Field
-                name="service_type"
-                label="Service type"
-                type="text"
-                component={Fields}
-                // validate={[required, nonEmpty, isTrimmed]}
-                autocomplete="off"
-              />
+                <Field
+                  name="service_type"
+                  label="Service type"
+                  element="select"
+                  component={Fields}
+                  validate={required}
+                  autocomplete="off"
+                >
+                  {this.props.serviceTypes.map((service, ind) =>
+                    <option key={ind} value={service}>{service}</option>)
+                  }
+                </Field>
               }
-              <button
-                className="form-btn"
-                type="submit"
-              >
-                Sign Up
-              </button>
-              <button type="button" disabled={this.props.pristine || this.props.submitting} onClick={this.props.reset}>Clear Values</button>
+              <div className="form-field form-field-signup-btns">
+                <button
+                  className="form-btn"
+                  type="submit"
+                >
+                  Sign Up
+                </button>
+                <button
+                  className="form-btn"
+                  type="button"
+                  disabled={this.props.pristine || this.props.submitting}
+                  onClick={this.props.reset}
+                >
+                  Clear Values
+                </button>
+              </div>
+
             </form>
             <p
               className="account-message"
@@ -154,7 +167,9 @@ SignUpForm = connect(
     return {
       roleValue,
       isAuthenticated: state.auth.currentUser !== null,
-      user: state.auth.currentUser
+      user: state.auth.currentUser,
+      locations: state.profiles.locations,
+      serviceTypes: state.profiles.serviceTypes
     }
   }
 )(SignUpForm);
