@@ -1,3 +1,25 @@
+Streamlined Beauty App
+============================
+This MVP is designed for people that are looking for freelance professionals that perform at-home beauty services in metro Atlanta. 
+As well as for freelancers that wish to advertise their services to grow their own business.
+You can check it out [here](https://streamlinedbeauty.netlify.com/)
+
+<img src="src/images/responsive-design.png" alt="app screenshot" width="50%">
+
+
+### Motivation
+This was a two-week project while studying for Engineering Immersion program at [Thinkful](https://www.thinkful.com/bootcamp/atlanta/).
+The goal was to develop a full-stack project, creating a frontend using React and Redux which communicates with a Node backend.
+
+## Getting Started
+#### Local Testing and Deployment
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

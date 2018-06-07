@@ -73,6 +73,9 @@
     display: inline-block;
     height: 40px;
     margin: 1em;
+    padding-left: 3px;
+    padding-right: 3px;
+
     /*width: */
     color: #ffffff;
     background-color: #ce1277;
@@ -95,6 +98,8 @@
     display: inline-block;
     height: 40px;
     margin: 1em;
+    padding-left: 3px;
+    padding-right: 3px;
 
     color: #FFFFFF;
     border: 1px solid #FFFFFF;
