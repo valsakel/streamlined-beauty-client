@@ -41,13 +41,24 @@ class Profile extends React.Component {
         </div>
         <main className="main-dashboard">
           <section className="data-card-section">
-            <a
-              href={`mailto:${this.props.user.email}?subject=Schedule%20an%20appointment`}
-              className="button-link"
-              aria-label="Click to send an email"
-            >
-              Send email
-            </a>
+            {this.props.isAuthenticated
+              ?
+                <a
+                  href={`mailto:${this.props.user.email}?subject=Schedule%20an%20appointment`}
+                  className="button-link"
+                  aria-label="Click to send an email"
+                >
+                  Send email
+                </a>
+              :
+                <Link
+                  to="/signin"
+                  className="button-link"
+                  aria-label="Click to send an email"
+                >
+                  Send email
+                </Link>
+            }
             <article className="data-card-article">
               <header className="data-card-header">
                 <div className="data-card-img">
@@ -88,6 +99,7 @@ class Profile extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    isAuthenticated: state.auth.currentUser !== null,
     user: state.profile.data,
     services: state.services.data,
     profileError: state.profile.error,

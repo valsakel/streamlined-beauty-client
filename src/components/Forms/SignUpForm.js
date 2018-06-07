@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { reduxForm, Field, focus, formValueSelector } from 'redux-form';
+import { reduxForm, Field, focus, formValueSelector, getFormSyncErrors } from 'redux-form';
 import HeaderBar from '../HeaderBar';
 import Fields from './Fields';
 import {isTrimmed, nonEmpty, required, validEmail, length, matches} from './validators';
@@ -33,13 +33,14 @@ class SignUpForm extends React.Component {
       }
       return <Redirect to="/profiles"/>
     }
+    console.log(this.props.syncErrors);
 
     return (
       <React.Fragment>
         <HeaderBar />
         {this.props.error &&
-        <div className="error-bar" aria-live="polite" role="alert">{this.props.error}</div>
-        }
+      <div className="error-bar" aria-live="polite" role="alert">{this.props.error}</div>
+      }
         <div className="signin-form-wrapper">
           <div className="signin-form">
             <h2 className="signin-form-header">Account Sign Up</h2>
@@ -153,8 +154,8 @@ function scroll () {
 
 SignUpForm = reduxForm({
   form: 'signup',
-  onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('signup', 'email'))
+  // onSubmitFail: (errors, dispatch) =>
+  //   dispatch(focus('signup', 'email'))
 })(SignUpForm);
 
 const selector = formValueSelector('signup');
@@ -163,13 +164,16 @@ const selector = formValueSelector('signup');
 // This will allow to conditionally add 'Select type' field to the form
 SignUpForm = connect(
   state => {
+    console.log('STATE', state);
     const roleValue = selector(state, 'role');
+
     return {
       roleValue,
       isAuthenticated: state.auth.currentUser !== null,
       user: state.auth.currentUser,
       locations: state.profiles.locations,
-      serviceTypes: state.profiles.serviceTypes
+      serviceTypes: state.profiles.serviceTypes,
+      syncErrors: getFormSyncErrors('signup')(state)
     }
   }
 )(SignUpForm);
