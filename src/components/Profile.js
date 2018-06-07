@@ -30,12 +30,10 @@ class Profile extends React.Component {
         <div className="return-link-section">
           <Link
             to="/profiles"
-            aria-label="Click to return to the board"
+            aria-label="Return to the board"
           > &larr; &ensp; Back to the board</Link>
         </div>
         <main className="main-dashboard">
-
-
         <section className="data-card-section">
           <a
             href={`mailto:${this.props.user.email}?subject=Schedule%20an%20appointment`}

@@ -2,7 +2,7 @@ import {
   POPULATE_PROFILES_SUCCESS,
   POPULATE_PROFILES_ERROR,
   SET_PROFILE_LOCATION_FILTER,
-  SET_PROFILE_SERVICE_FILTER
+  SET_PROFILE_SERVICE_FILTER, CLEAR_PROFILE_LOCATION_FILTER, CLEAR_PROFILE_SERVICE_FILTER
 } from '../actions/profiles';
 
 const initialState = {
@@ -38,10 +38,24 @@ export default function reducer (state = initialState, action) {
     }
   }
 
+  if (action.type === CLEAR_PROFILE_LOCATION_FILTER) {
+    return {
+      ...state,
+      filteredLocation: 'Pick a location'
+    }
+  }
+
   if (action.type === SET_PROFILE_SERVICE_FILTER) {
     return {
       ...state,
       filteredServiceType: action.service
+    }
+  }
+
+  if (action.type === CLEAR_PROFILE_SERVICE_FILTER) {
+    return {
+      ...state,
+      filteredServiceType: 'Pick a pro'
     }
   }
 

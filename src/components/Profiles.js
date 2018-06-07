@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import { Field } from 'redux-form';
 
-import { setProfileLocationFilter, setProfileServiceFilter } from '../actions/profiles'
+import {
+  setProfileLocationFilter,
+  setProfileServiceFilter,
+  clearProfileLocationFilter,
+  clearProfileServiceFilter
+}
+from '../actions/profiles'
 
 import HeaderBar from './HeaderBar';
 
@@ -18,9 +24,13 @@ import placeholder_person from '../images/placeholder_person.jpg';
 
 class Profiles extends React.Component {
   componentDidMount() {
-    console.log('COMPONENT DID MOUNT');
     this.props.dispatch(fetchProfiles());
   }
+
+  componentWillUnmount() {
+    this.props.dispatch(clearProfileLocationFilter());
+    this.props.dispatch(clearProfileServiceFilter());
+  };
 
   onLocationChange = e => {
     console.log('onLocationChange ran', e.target.value);

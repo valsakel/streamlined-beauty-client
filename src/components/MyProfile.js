@@ -80,12 +80,9 @@ class MyProfile extends React.Component {
     e.preventDefault();
     console.log('onServiceDelete ran', e.target.getAttribute('data-service-id'));
     this.props.dispatch(deleteMyProfileService(e.target.getAttribute('data-service-id')));
-
   };
 
   render() {
-
-    console.log(this.props.user);
     return (
       <React.Fragment>
         <HeaderBar />
@@ -122,38 +119,34 @@ class MyProfile extends React.Component {
                 <h2>Services</h2>
                 <div className="my-profile-services-section">
                   <div>
-                    {/*<h4 className="data-card-services-header">Service</h4>*/}
                     <ul>
                       {this.props.userServices.map((service, ind) => (<li key={ind}>{service.service}</li>))}
                     </ul>
                   </div>
                   <div>
-                    {/*<h4 className="data-card-services-header">Price</h4 >*/}
                     <ul>
                       {this.props.userServices.map((service, ind) => (<li key={ind}>${service.price}</li>))}
                     </ul>
                   </div>
                     <div>
-                        {/*<h4 className="data-card-services-header">Price</h4 >*/}
-                        <ul>
-                            {this.props.userServices.map((service, ind) => (
-                                <button
-                                  className="my-profile-destroy-service"
-                                  onClick={this.onServiceDelete}
-                                  type="submit"
-                                  aria-label={`Click to delete ${service.service} service`}
-                                  data-service-id={service.id}
-                                  key={service.id}
-                                >
-                                </button>)
-                            )}
-                        </ul>
+                      <ul>
+                        {this.props.userServices.map((service, ind) => (
+                          <button
+                            className="my-profile-destroy-service"
+                            onClick={this.onServiceDelete}
+                            type="submit"
+                            aria-label={`Click to delete ${service.service} service`}
+                            data-service-id={service.id}
+                            key={service.id}
+                          >
+                          </button>)
+                        )}
+                      </ul>
                     </div>
-
                 </div>
                 {this.props.editServices
                   ?
-                  <div>
+                  <div aria-expanded={this.props.editServices}>
                     <form id="my-profile-add-services-form">
                       {this.props.error === 'Required field' &&
                       <div className="service-form-error" aria-live="polite">{this.props.error}</div>}
@@ -162,6 +155,7 @@ class MyProfile extends React.Component {
                         <select
                           onChange={this.onServiceValChange}
                           className="my-profile-add-services-form-field"
+                          // aria-label="Pick a location"
                         >
                           {this.props.filterServices.map((service, ind) => (
                             <option value={service} key={ind}>{service}</option>
@@ -176,10 +170,22 @@ class MyProfile extends React.Component {
                           type="number"
                           placeholder="$$$"
                           className="my-profile-add-services-form-field"
+                          title="Price"
+                          aria-label="Service price"
                         />
                       </label>
-                    <button type="submit" onClick={this.addNewService}>Add</button>
-                    <button type="button" onClick={() => this.props.dispatch(editProfileServicesEnd())}>
+                    <button
+                      type="submit"
+                      onClick={this.addNewService}
+                      aria-label="Add service"
+                    >
+                      Add
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => this.props.dispatch(editProfileServicesEnd())}
+                      aria-label="Cancel form"
+                    >
                       Cancel
                     </button>
                     </form>
@@ -201,7 +207,6 @@ class MyProfile extends React.Component {
           }
         </main>
       </React.Fragment>
-
     )
   }
 }

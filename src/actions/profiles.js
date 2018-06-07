@@ -19,9 +19,21 @@ export const setProfileLocationFilter = location => ({
   location
 });
 
+export const CLEAR_PROFILE_LOCATION_FILTER = 'CLEAR_PROFILE_LOCATION_FILTER';
+export const clearProfileLocationFilter = location => ({
+  type: CLEAR_PROFILE_LOCATION_FILTER,
+  location
+});
+
 export const SET_PROFILE_SERVICE_FILTER = 'SET_PROFILE_SERVICE_FILTER';
 export const setProfileServiceFilter = service => ({
   type: SET_PROFILE_SERVICE_FILTER,
+  service
+});
+
+export const CLEAR_PROFILE_SERVICE_FILTER = 'CLEAR_PROFILE_SERVICE_FILTER';
+export const clearProfileServiceFilter = service => ({
+  type: CLEAR_PROFILE_SERVICE_FILTER,
   service
 });
 

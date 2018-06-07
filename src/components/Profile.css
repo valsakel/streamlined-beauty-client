@@ -17,6 +17,10 @@
     margin-left: 5px;
 }
 
+.return-link-section a:focus {
+    text-decoration: underline;
+}
+
 .data-card-services {
     border-top: 1px solid #818181;
     margin: 1em;
