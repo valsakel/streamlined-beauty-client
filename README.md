@@ -4,7 +4,7 @@ This MVP is designed for people that are looking for freelance professionals tha
 As well as for freelancers that wish to advertise their services to grow their own business.
 You can check it out [here](https://streamlinedbeauty.netlify.com/)
 
-<img src="src/images/responsive-design.png" alt="app screenshot" width="50%">
+<img src="src/images/responsive-design.png" alt="app screenshot" width="40%">
 
 
 ### Motivation
