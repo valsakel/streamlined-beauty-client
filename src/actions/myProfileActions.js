@@ -94,7 +94,6 @@ export const postProfileServiceError = error => ({
   error
 });
 
-
 export const fetchMyProfileDetails = () => (dispatch, getState) => {
   console.log('fetchMyProfileDetails ran');
   const authToken = getState().auth.authToken;
@@ -119,12 +118,12 @@ export const fetchMyProfileDetails = () => (dispatch, getState) => {
 
 export const postMyProfileService = (service) => (dispatch, getState) => {
   console.log('postMyProfileService ran');
-  // const authToken = getState().auth.authToken;
+  const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/myprofile/service`, {
     method: 'POST',
     headers: {
       // Provide our auth token as credentials
-      // Authorization: `Bearer ${authToken}`,
+      Authorization: `Bearer ${authToken}`,
       'Content-type': 'application/json'
     },
     body: JSON.stringify(service)
@@ -138,31 +137,31 @@ export const postMyProfileService = (service) => (dispatch, getState) => {
     })
     .catch(error => {
       console.error(error);
-      dispatch(postProfileServiceError(error));
+      const message ='Something went wrong. Please try again later';
+      dispatch(postProfileServiceError(message));
     });
 };
 
 export const deleteMyProfileService = user_id => (dispatch, getState) => {
-    console.log('deleteMyProfileService ran', user_id);
-    // const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/api/myprofile/service/${user_id}`, {
-        method: 'DELETE',
-        headers: {
-            // Provide our auth token as credentials
-            // Authorization: `Bearer ${authToken}`,
-            'Content-type': 'application/json'
-        }
+  console.log('deleteMyProfileService ran', user_id);
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/api/myprofile/service/${user_id}`, {
+    method: 'DELETE',
+    headers: {
+      // Provide our auth token as credentials
+      Authorization: `Bearer ${authToken}`,
+      'Content-type': 'application/json'
+    }
+  })
+    .then(res => normalizeErrors(res))
+    .then(data => {
+      // dispatch(fetchMyProfileDetailsSuccess(data))
+      const user_id = getState().auth.currentUser.user_id;
+      dispatch(fetchServices(user_id))
     })
-    // .then(res => normalizeResponseErrors(res))
-    //     .then(res => res.json())
-        .then(data => {
-            // dispatch(fetchMyProfileDetailsSuccess(data))
-            const user_id = getState().auth.currentUser.user_id;
-            dispatch(fetchServices(user_id))
-        })
-        .catch(error => {
-            console.error(error);
-            dispatch(deleteProfileServiceError(error));
-        });
+    .catch(() => {
+      const message ='Something went wrong. Please try again later';
+      dispatch(deleteProfileServiceError(message));
+    });
 };
 

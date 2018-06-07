@@ -15,9 +15,6 @@ export const registerUser = (user) => dispatch => {
     .then(res => normalizeErrors(res))
     .then(res => res.json())
     .then(res => {
-      console.log('register user email', user.email);
-      console.log('register user password', user.password);
-
       dispatch(login(user.email, user.password))
     })
     .catch(err => {

@@ -221,7 +221,8 @@ const mapStateToProps = state => {
     filterServices: state.services.services,
     serviceVal: state.myProfilesServices.serviceVal,
     priceVal: state.myProfilesServices.priceVal,
-    error: state.myProfilesServices.error
+    error: state.myProfilesServices.error,
+    // postServiceError: state.myP
   }
 };
 

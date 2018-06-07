@@ -42,15 +42,15 @@ export default function reducer (state = initialState, action) {
     }
   }
 
-  if (action.type === DELETE_PROFILE_SERVICE) {
-    console.log('deleteProfileService REDUCER ran');
-    return {
-      ...state,
-      // data: action.service,
-      data: [...state, action.service],
-      error: null
-    }
-  }
+  // if (action.type === DELETE_PROFILE_SERVICE) {
+  //   console.log('deleteProfileService REDUCER ran');
+  //   return {
+  //     ...state,
+  //     // data: action.service,
+  //     data: [...state, action.service],
+  //     error: null
+  //   }
+  // }
 
   if (action.type === DELETE_PROFILE_SERVICE_ERROR) {
     return {
@@ -74,7 +74,6 @@ export default function reducer (state = initialState, action) {
   }
 
   if (action.type === EDIT_PROFILE_SERVICES_START) {
-    console.log('hey EDIT SERVICES START action');
     return {
       ...state,
       editServices: true
