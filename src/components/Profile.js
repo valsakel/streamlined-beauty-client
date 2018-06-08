@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { fetchProfileDetails, fetchServices } from '../actions/profile';
+import { fetchProfileDetails, fetchServices, fetchServicesClear } from '../actions/profile';
 
 import HeaderBar from './HeaderBar';
 
@@ -12,10 +12,6 @@ import placeholder_person from '../images/placeholder_person.jpg';
 
 class Profile extends React.Component {
   componentDidMount() {
-    console.log('COMPONENT DID MOUNT');
-    console.log(this.props.data);
-    console.log(this.props.match.params.user_id);
-
     this.props.dispatch(fetchProfileDetails(this.props.match.params.user_id));
     this.props.dispatch(fetchServices(this.props.match.params.user_id));
   }
@@ -37,6 +33,7 @@ class Profile extends React.Component {
           <Link
             to="/profiles"
             aria-label="Return to the board"
+            onClick={this.props.dispatch(fetchServicesClear)}
           > &larr; &ensp; Back to the board</Link>
         </div>
         <main className="main-dashboard">

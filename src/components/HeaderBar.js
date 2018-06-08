@@ -10,22 +10,23 @@ class HeaderBar extends React.Component {
     this.state = {
       visible: false
     };
-    this.handleClick = this.handleClick.bind(this);
-    this.toggleMenu = this.toggleMenu.bind(this);
   }
 
-  handleClick(e) {
+  handleClick = e => {
     this.toggleMenu();
-
-    console.log("clicked");
     e.stopPropagation();
-  }
+  };
 
-  toggleMenu() {
+  toggleMenu = () => {
     this.setState({
       visible: !this.state.visible
     });
-  }
+
+    // Set focus on hamburger 'open' button when sliding menu is hidden
+    if (this.state.visible) {
+      this.refs.open.focus();
+    }
+  };
 
   render() {
     return (
@@ -45,6 +46,7 @@ class HeaderBar extends React.Component {
               id="menuButton"
               type="button"
               onClick={this.handleClick}
+              ref="open"
               aria-expanded={this.state.visible}
               aria-label="MENU"
               aria-controls="overlay-menu"

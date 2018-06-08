@@ -5,15 +5,16 @@ import {loadAuthToken} from './actions/localStorage';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 
 
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
+// const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 const store = createStore(
   rootReducer,
   compose(
     applyMiddleware(thunk),
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
-
 
 // Hydrate the authToken from localStorage if it exist
 const authToken = loadAuthToken();

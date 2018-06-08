@@ -5,10 +5,10 @@ As well as for freelancers that wish to advertise their services to grow their o
 
 <img src="src/images/responsive-design.png" alt="app screenshot" width="40%">
 
-View live [here](https://streamlinedbeauty.netlify.com/)
+You can view it live [here](https://streamlinedbeauty.netlify.com/)
 
 ### Motivation
-That was a two-week project while studying for Engineering Immersion program at [Thinkful](https://www.thinkful.com/bootcamp/atlanta/).
+It was a two-week project for Engineering Immersion program at [Thinkful](https://www.thinkful.com/bootcamp/atlanta/).
 The goal was to develop a full-stack project, creating a frontend using React and Redux which communicates with a Node backend.
 
 ## Getting Started
@@ -23,11 +23,10 @@ See deployment for notes on how to deploy the project on a live system.
 * Open [http://localhost:3000](http://localhost:3000) to view it in the browser
 * To set up the server, please refer to this [readme](https://github.com/Sakela17/streamlined-beauty-app-api) for the instructions
 * Proceed to deployment steps once the server has been deployed
-#### Deployment
+#### Deployment on Netlify
 * Create a production build by running ```REACT_APP_API_BASE_URL="https://MY-APP-.herokuapp.com" npm run build```
 * Create a Netlify app ```netlify create```. This will automatically add a file called ```.netlify``` to the root dir
 * Create ```.gitignore``` file and add ```.netlify``` and ```/node_modules``` 
-* 
 * Deploy the app by running ```netlify deploy -p ./build -t <YOUR_ACCESS_TOKEN> -s <YOUR_SITE_ID>```  
   - to get ```<YOUR_ACCESS_TOKEN>``` run ```cat ~/.netlify/config```  
   - get ```<YOUR_SITE_ID>``` (without quotes) from ```.netlify``` file in the root dir

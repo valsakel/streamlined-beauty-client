@@ -2,7 +2,7 @@ import {
   POPULATE_PROFILES_SUCCESS,
   POPULATE_PROFILES_ERROR,
   SET_PROFILE_LOCATION_FILTER,
-  SET_PROFILE_SERVICE_FILTER, CLEAR_PROFILE_LOCATION_FILTER, CLEAR_PROFILE_SERVICE_FILTER
+  SET_PROFILE_SERVICE_FILTER, CLEAR_PROFILE_LOCATION_FILTER, CLEAR_PROFILE_SERVICE_FILTER, POPULATE_PROFILES_CLEAR
 } from '../actions/profiles';
 
 const initialState = {
@@ -23,8 +23,15 @@ export default function reducer (state = initialState, action) {
     }
   }
 
+  if (action.type === POPULATE_PROFILES_CLEAR) {
+    return {
+      ...state,
+      data: [],
+      error: null
+    }
+  }
+
   if (action.type === POPULATE_PROFILES_ERROR) {
-    console.log('POPULATE_PROFILES_ERROR', action.error);
     return {
       ...state,
       error: action.error

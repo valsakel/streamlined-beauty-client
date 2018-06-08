@@ -8,9 +8,16 @@ import "./SlidingMenu.css";
 
 class SlidingMenu extends React.Component {
 
+  componentWillUpdate(nextProps, nextState) {
+    console.log(nextProps);
+    console.log(nextState);
+    nextProps.visibility ? this.refs.close.focus() : this.refs.close.blur();
+  }
+
   onSignOut = () => {
     this.props.dispatch(clearAuth());
     clearAuthToken();
+
   };
 
   render() {
@@ -21,21 +28,31 @@ class SlidingMenu extends React.Component {
     }
 
     return (
-      <div id="flyoutMenu"
-           onClick={this.props.handleClick}
-           className={visibility}>
-        <Link to="/">Home</Link>
-        <Link to="/profiles">Browse</Link>
-        <Link to="/">How it works</Link>
+      <div
+        id="flyoutMenu"
+        className={visibility}
+      >
+        <button
+          className="close-menu-btn"
+          onClick={this.props.handleClick}
+          type="button"
+          ref="close"
+          tabindex={this.props.visibility ? "0" : "-1"}
+          aria-label="close"
+        >
+        </button>
+        <Link tabindex={this.props.visibility ? "0" : "-1"} to="/">Home</Link>
+        <Link tabindex={this.props.visibility ? "0" : "-1"} to="/profiles">Browse</Link>
+        <Link tabindex={this.props.visibility ? "0" : "-1"} to="/">How it works</Link>
         {this.props.isSignedIn ? (
           <React.Fragment>
-            <Link to="/signin" onClick={this.onSignOut}>Sign Out</Link>
-            <Link to="/profiles/myprofile">My Profile</Link>
+            <Link tabindex={this.props.visibility ? "0" : "-1"} to="/signin" onClick={this.onSignOut}>Sign Out</Link>
+            <Link tabindex={this.props.visibility ? "0" : "-1"} to="/profiles/myprofile">My Profile</Link>
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <Link to="/signup">Sign Up</Link>
-            <Link to="/signin">Sign In</Link>
+            <Link tabindex={this.props.visibility ? "0" : "-1"} to="/signup">Sign Up</Link>
+            <Link tabindex={this.props.visibility ? "0" : "-1"} to="/signin">Sign In</Link>
           </React.Fragment>
         )}
       </div>

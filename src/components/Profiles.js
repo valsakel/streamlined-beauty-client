@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
-import { Field } from 'redux-form';
-
 import {
   setProfileLocationFilter,
   setProfileServiceFilter,
@@ -10,17 +8,10 @@ import {
   clearProfileServiceFilter
 }
 from '../actions/profiles'
-
 import HeaderBar from './HeaderBar';
-
-
-import { fetchProfiles } from '../actions/profiles';
-
+import { fetchProfiles, populateProfilesClear } from '../actions/profiles';
 import './Profiles.css';
-import {required} from "./Forms/validators";
-
 import placeholder_person from '../images/placeholder_person.jpg';
-
 
 class Profiles extends React.Component {
   componentDidMount() {
@@ -33,25 +24,14 @@ class Profiles extends React.Component {
   };
 
   onLocationChange = e => {
-    console.log('onLocationChange ran', e.target.value);
     this.props.dispatch(setProfileLocationFilter(e.target.value))
-    // this.setState({value: event.target.value});
   };
 
   onServiceChange = e => {
-    console.log('onServiceChange ran', e.target.value);
     this.props.dispatch(setProfileServiceFilter(e.target.value))
   };
 
-  handleSubmit = event => {
-    console.log('handleSubmit from Profiles ran');
-    // alert('Your favorite flavor is: ' + this.state.value);
-    event.preventDefault();
-  };
-
   render() {
-    console.log(this.props);
-    console.log(this.props.data);
     const filterByLocation = user => {
       return user.location === this.props.filteredLocation || this.props.filteredLocation === 'Pick a location';
     };
@@ -80,6 +60,7 @@ class Profiles extends React.Component {
               <Link
                 to={`/profiles/details/${user.user_id}`}
                 className="button-link"
+                onClick={this.props.dispatch(populateProfilesClear)}
                 aria-label="Click to view freelancer's profile"
               >
                 View profile

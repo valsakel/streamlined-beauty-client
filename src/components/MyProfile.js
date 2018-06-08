@@ -155,7 +155,8 @@ class MyProfile extends React.Component {
                         <select
                           onChange={this.onServiceValChange}
                           className="my-profile-add-services-form-field"
-                          // aria-label="Pick a location"
+                          aria-label="Pick a location"
+                          autoFocus="true"
                         >
                           {this.props.filterServices.map((service, ind) => (
                             <option value={service} key={ind}>{service}</option>
@@ -222,7 +223,6 @@ const mapStateToProps = state => {
     serviceVal: state.myProfilesServices.serviceVal,
     priceVal: state.myProfilesServices.priceVal,
     error: state.myProfilesServices.error,
-    // postServiceError: state.myP
   }
 };
 

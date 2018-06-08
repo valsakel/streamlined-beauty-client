@@ -1,7 +1,5 @@
 import jwtDecode from 'jwt-decode';
 import { SubmissionError } from 'redux-form';
-
-import authUserReducer from '../reducers/authReducer';
 import { API_BASE_URL } from '../config';
 import normalizeErrors from './utils';
 import { saveAuthToken, clearAuthToken } from './localStorage';
@@ -37,15 +35,17 @@ export const clearAuth = () => ({
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {
+  console.log('storeAuthInfo ran');
   const decodedToken = jwtDecode(authToken);
+  console.log('decodedToken', decodedToken);
   dispatch(setAuthToken(authToken));
+  console.log('decodedToken user', decodedToken.user);
   dispatch(authSuccess(decodedToken.user));
   saveAuthToken(authToken);
 };
 
 // Fetch request to authorize user
 export const login = (email, password) => dispatch => {
-  console.log(email, password);
   dispatch(authRequest());
   return fetch(`${API_BASE_URL}/api/signin`, {
     method: 'POST',
@@ -72,11 +72,6 @@ export const login = (email, password) => dispatch => {
           _error: error.message
         })
       );
-
-      // if (err.status === 401) {
-      //   dispatch(authError(err.message));
-      // }
-      // console.log(err.status);
     })
 };
 
@@ -93,11 +88,12 @@ export const refreshAuthToken = () => (dispatch, getState) => {
   })
     .then(res => normalizeErrors(res))
     .then(res => res.json())
-    .then(({authToken}) => storeAuthInfo(authToken, dispatch))
+    .then(({authToken}) => {
+      storeAuthInfo(authToken, dispatch)
+    })
     .catch(err => {
-      // We couldn't get a refresh token because our current credentials
-      // are invalid or expired, or something else went wrong, so clear
-      // them and sign us out
+      // If credentials are invalid or expired, or something else went wrong,
+      // Clear auth token from local storage
       dispatch(authError(err));
       dispatch(clearAuth());
       clearAuthToken(authToken);

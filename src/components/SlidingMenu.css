@@ -26,7 +26,6 @@
 #flyoutMenu a {
     display: block;
     color: #FFF;
-
     margin-left: 15px;
     margin-bottom: 15px;
     text-decoration: none;
@@ -38,14 +37,40 @@
 #flyoutMenu a:focus {
     color: #ce1277;
     border-bottom: 2px solid #ce1277;
-
-
 }
 
+.close-menu-btn {
+    display: block;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin-left: 5px;
+    margin-bottom: 15px;
+    border: 0;
+    background: none;
+    font-size: 1.3rem;
+    vertical-align: baseline;
+    font-family: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    color: #ce1277;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.close-menu-btn:hover,
+.close-menu-btn:focus {
+    text-shadow: 0 0 1px #c3baba, 0 0 8px rgba(239, 18, 143, 0.79);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.close-menu-btn::after {
+    content: "✖";
+}
 
 @media only screen and (min-width: 640px) {
     #flyoutMenu.show {
         transform: translate3d(70%, 0, 0);
     }
-
 }

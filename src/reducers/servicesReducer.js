@@ -1,4 +1,9 @@
-import { FETCH_SERVICES_SUCCESS, FETCH_SERVICES_ERROR } from '../actions/profile';
+import {
+  FETCH_SERVICES_SUCCESS,
+  FETCH_SERVICES_CLEAR,
+  FETCH_SERVICES_ERROR
+}
+from '../actions/profile';
 
 const initialState = {
   data: [],
@@ -11,6 +16,14 @@ export default function reducer (state = initialState, action) {
     return {
       ...state,
       data: action.data,
+      error: null
+    }
+  }
+
+  if (action.type === FETCH_SERVICES_CLEAR) {
+    return {
+      ...state,
+      data: [],
       error: null
     }
   }

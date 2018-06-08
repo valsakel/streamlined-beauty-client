@@ -7,6 +7,11 @@ export const populateProfilesSuccess = data => ({
   data
 });
 
+export const POPULATE_PROFILES_CLEAR = 'POPULATE_PROFILES_CLEAR';
+export const populateProfilesClear = () => ({
+  type: POPULATE_PROFILES_CLEAR
+});
+
 export const POPULATE_PROFILES_ERROR = 'POPULATE_PROFILES_ERROR';
 export const populateProfilesError = error => ({
   type: POPULATE_PROFILES_ERROR,
@@ -37,15 +42,9 @@ export const clearProfileServiceFilter = service => ({
   service
 });
 
-export const fetchProfiles = (location) => (dispatch, getState) => {
+export const fetchProfiles = () => (dispatch, getState) => {
   // const authToken = getState().auth.authToken;
-  return fetch(`${API_BASE_URL}/api/profiles`, {
-    method: 'GET',
-    headers: {
-      // Provide our auth token as credentials
-      // Authorization: `Bearer ${authToken}`
-    }
-  })
+  return fetch(`${API_BASE_URL}/api/profiles`)
     .then(res => normalizeErrors(res))
     .then(res => res.json())
     .then(data => {

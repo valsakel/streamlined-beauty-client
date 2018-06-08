@@ -19,15 +19,18 @@ export const fetchServicesSuccess = data => ({
   data
 });
 
+export const FETCH_SERVICES_CLEAR = 'FETCH_SERVICES_CLEAR';
+export const fetchServicesClear = () => ({
+  type: FETCH_SERVICES_CLEAR,
+});
+
 export const FETCH_SERVICES_ERROR = 'FETCH_SERVICES_ERROR';
 export const fetchServicesError = error => ({
   type: FETCH_SERVICES_ERROR,
   error
 });
 
-
 export const fetchProfileDetails = (userId) => (dispatch, getState) => {
-  console.log(userId);
   // const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/profiles/${userId}`, {
     method: 'GET',

@@ -27,7 +27,7 @@ export const setMyProfileServiceValChange = (service) => {
   return {
   type: SET_PROFILE_SERVICE_VAL_CHANGE,
   service
-}
+  }
 };
 
 export const CLEAR_PROFILE_SERVICE_VAL_CHANGE = 'CLEAR_PROFILE_SERVICE_VAL_CHANGE';
@@ -58,23 +58,19 @@ export const clearMyProfilePriceValChange = () => ({
 
 export const DELETE_PROFILE_SERVICE = 'DELETE_PROFILE_SERVICE';
 export const deleteProfileServices = (service) => {
-    console.log('deleteProfileService ran');
-    console.log(service);
-    return {
-        type: DELETE_PROFILE_SERVICE,
-        service
-    }
+  return {
+    type: DELETE_PROFILE_SERVICE,
+    service
+  }
 };
 
 export const DELETE_PROFILE_SERVICE_ERROR = 'DELETE_PROFILE_SERVICE_ERROR';
 export const deleteProfileServiceError = (error) => {
-    console.log('deleteProfileServiceError ran');
-    return {
-        type: DELETE_PROFILE_SERVICE_ERROR,
-        error
-    }
+  return {
+    type: DELETE_PROFILE_SERVICE_ERROR,
+    error
+  }
 };
-
 
 export const FETCH_MYPROFILE_DETAILS_SUCCESS = 'FETCH_MYPROFILE_DETAILS_SUCCESS';
 export const fetchMyProfileDetailsSuccess = data => ({
