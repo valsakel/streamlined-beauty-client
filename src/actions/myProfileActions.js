@@ -84,6 +84,19 @@ export const fetchMyProfileDetailsError = error => ({
   error
 });
 
+
+export const FETCH_MYPROFILE_SERVICES_SUCCESS = 'FETCH_MYPROFILE_SERVICES_SUCCESS';
+export const fetchMyProfileServicesSuccess = data => ({
+  type: FETCH_MYPROFILE_SERVICES_SUCCESS,
+  data
+});
+
+export const FETCH_MYPROFILE_SERVICES_ERROR = 'FETCH_MYPROFILE_SERVICES_ERROR';
+export const fetchMyProfileServicesError = error => ({
+  type: FETCH_MYPROFILE_SERVICES_ERROR,
+  error
+});
+
 export const POST_PROFILE_SERVICE_ERROR = 'POST_PROFILE_SERVICE_ERROR';
 export const postProfileServiceError = error => ({
   type: POST_PROFILE_SERVICE_ERROR,
@@ -111,6 +124,28 @@ export const fetchMyProfileDetails = () => (dispatch, getState) => {
       dispatch(fetchMyProfileDetailsError(error));
     });
 };
+
+// export const fetchMyProfileServices = () => (dispatch, getState) => {
+//   const authToken = getState().auth.authToken;
+//   return fetch(`${API_BASE_URL}/api/myprofile/services`, {
+//     method: 'GET',
+//     headers: {
+//       // Provide our auth token as credentials
+//       Authorization: `Bearer ${authToken}`
+//     }
+//   })
+//   // .then(res => normalizeResponseErrors(res))
+//     .then(res => res.json())
+//     .then(data => {
+//       console.log(data);
+//       dispatch(fetchMyProfileServicesSuccess(data))
+//     })
+//     .catch(error => {
+//       console.error(error);
+//       dispatch(fetchMyProfileServicesError(error));
+//     });
+// };
+
 
 export const postMyProfileService = (service) => (dispatch, getState) => {
   console.log('postMyProfileService ran');

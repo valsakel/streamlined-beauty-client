@@ -5,7 +5,6 @@ import { requireService } from './Forms/validators';
 import RequiresLogin from './RequiresLogin';
 
 import HeaderBar from './HeaderBar';
-import MyProfileAccountForm from './MyProfileAccountForm';
 
 import {
   editProfileAccountStart,
@@ -90,91 +89,87 @@ class MyProfile extends React.Component {
         <div className="error-bar" aria-live="polite" role="alert">{this.props.error}</div>
         }
         <main className="main-dashboard">
-          {this.props.editAccount
-            ?
-            <MyProfileAccountForm />
-            :
-            <section className="my-profile-section">
-              <h2>
-                My Profile
-              </h2>
-              <section className="my-profile-account">
-                <h2>Account</h2>
-                <main className="card-header data-card-header">
-                  <div className="card-user-img data-card-img">
-                    <img src={placeholder_person} className="data-user-img" alt="placeholder clip art" />
-                  </div>
-                  <div className="my-profile-account-info">
-                    <h3>{this.props.user.full_name}</h3>
-                    <p>{this.props.user.location}</p>
-                    <p>{this.props.user.service_type}</p>
-                    <p>{this.props.user.email}</p>
-                  </div>
-                  {/*<div className="my-profile-edit-btn-section">*/}
-                    {/*<button className="profile-edit-btn" type="button" onClick={() => this.props.dispatch(editProfileAccountStart())}>Edit</button>*/}
-                  {/*</div>*/}
-                </main>
-              </section>
-              <section className="my-profile-services my-profile-account">
-                <h2>Services</h2>
-                <div className="my-profile-services-section">
-                  <div>
-                    <ul>
-                      {this.props.userServices.map((service, ind) => (<li key={ind}>{service.service}</li>))}
-                    </ul>
-                  </div>
-                  <div>
-                    <ul>
-                      {this.props.userServices.map((service, ind) => (<li key={ind}>${service.price}</li>))}
-                    </ul>
-                  </div>
-                    <div>
-                      <ul>
-                        {this.props.userServices.map((service, ind) => (
-                          <button
-                            className="my-profile-destroy-service"
-                            onClick={this.onServiceDelete}
-                            type="submit"
-                            aria-label={`Click to delete ${service.service} service`}
-                            data-service-id={service.id}
-                            key={service.id}
-                          >
-                          </button>)
-                        )}
-                      </ul>
-                    </div>
+          <section className="my-profile-section">
+            <h2>
+              My Profile
+            </h2>
+            <section className="my-profile-account">
+              <h2>Account</h2>
+              <main className="card-header data-card-header">
+                <div className="card-user-img data-card-img">
+                  <img src={placeholder_person} className="data-user-img" alt="placeholder clip art" />
                 </div>
-                {this.props.editServices
-                  ?
-                  <div aria-expanded={this.props.editServices}>
-                    <form id="my-profile-add-services-form">
-                      {this.props.error === 'Required field' &&
-                      <div className="service-form-error" aria-live="polite">{this.props.error}</div>}
-                      <label className="my-profile-service-label">
-                        {/*Service*/}
-                        <select
-                          onChange={this.onServiceValChange}
-                          className="my-profile-add-services-form-field"
-                          aria-label="Pick a location"
-                          autoFocus="true"
-                        >
-                          {this.props.filterServices.map((service, ind) => (
-                            <option value={service} key={ind}>{service}</option>
-                          ))}
-                        </select>
-                      </label>
-                      <label className="my-profile-price-label">
-                        {/*Price*/}
-                        <input
-                          onChange={this.onPriceValChange}
-                          id="my-profile-price-input"
-                          type="number"
-                          placeholder="$$$"
-                          className="my-profile-add-services-form-field"
-                          title="Price"
-                          aria-label="Service price"
-                        />
-                      </label>
+                <div className="my-profile-account-info">
+                  <h3>{this.props.user.full_name}</h3>
+                  <p>{this.props.user.location}</p>
+                  <p>{this.props.user.service_type}</p>
+                  <p>{this.props.user.email}</p>
+                </div>
+                {/*<div className="my-profile-edit-btn-section">*/}
+                {/*<button className="profile-edit-btn" type="button" onClick={() => this.props.dispatch(editProfileAccountStart())}>Edit</button>*/}
+                {/*</div>*/}
+              </main>
+            </section>
+            <section className="my-profile-services my-profile-account">
+              <h2>Services</h2>
+              <div className="my-profile-services-section">
+                <div>
+                  <ul>
+                    {this.props.userServices.map((service, ind) => (<li key={ind}>{service.service}</li>))}
+                  </ul>
+                </div>
+                <div>
+                  <ul>
+                    {this.props.userServices.map((service, ind) => (<li key={ind}>${service.price}</li>))}
+                  </ul>
+                </div>
+                <div>
+                  <ul>
+                    {this.props.userServices.map((service, ind) => (
+                      <button
+                        className="my-profile-destroy-service"
+                        onClick={this.onServiceDelete}
+                        type="submit"
+                        aria-label={`Click to delete ${service.service} service`}
+                        data-service-id={service.id}
+                        key={service.id}
+                      >
+                      </button>)
+                    )}
+                  </ul>
+                </div>
+              </div>
+              {this.props.editServices
+                ?
+                <div aria-expanded={this.props.editServices}>
+                  <form id="my-profile-add-services-form">
+                    {this.props.error === 'Required field' &&
+                    <div className="service-form-error" aria-live="polite">{this.props.error}</div>}
+                    <label className="my-profile-service-label">
+                      {/*Service*/}
+                      <select
+                        onChange={this.onServiceValChange}
+                        className="my-profile-add-services-form-field"
+                        aria-label="Pick a location"
+                        autoFocus="true"
+                      >
+                        {this.props.filterServices.map((service, ind) => (
+                          <option value={service} key={ind}>{service}</option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="my-profile-price-label">
+                      {/*Price*/}
+                      <input
+                        onChange={this.onPriceValChange}
+                        id="my-profile-price-input"
+                        type="number"
+                        placeholder="$$$"
+                        className="my-profile-add-services-form-field"
+                        title="Price"
+                        aria-label="Service price"
+                      />
+                    </label>
                     <button
                       type="submit"
                       onClick={this.addNewService}
@@ -189,23 +184,22 @@ class MyProfile extends React.Component {
                     >
                       Cancel
                     </button>
-                    </form>
-                  </div>
-                  :
-                  <div>
-                    <a
-                      href="#"
-                      onClick={() => this.props.dispatch(editProfileServicesStart())}
-                      className="my-profile-add-services-link"
-                      aria-label="Click to add a new service"
-                    >
-                      Add a service ...
-                    </a>
-                  </div>
-                }
-              </section>
+                  </form>
+                </div>
+                :
+                <div>
+                  <a
+                    href="#"
+                    onClick={() => this.props.dispatch(editProfileServicesStart())}
+                    className="my-profile-add-services-link"
+                    aria-label="Click to add a new service"
+                  >
+                    Add a service ...
+                  </a>
+                </div>
+              }
             </section>
-          }
+          </section>
         </main>
       </React.Fragment>
     )

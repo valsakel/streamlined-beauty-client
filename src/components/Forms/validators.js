@@ -27,4 +27,4 @@ export const matches = field => (value, allValues) =>
     ? undefined
     : 'Does not match';
 
-export const requireService = value => value === 'Pick a service' ? 'Required field' : undefined;
+// export const requireService = value => value === 'Pick a service' ? 'Required field' : undefined;

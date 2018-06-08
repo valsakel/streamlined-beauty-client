@@ -7,6 +7,11 @@ export const fetchProfileDetailsSuccess = data => ({
   data
 });
 
+export const FETCH_PROFILE_DETAILS_CLEAR = 'FETCH_PROFILE_DETAILS_CLEAR';
+export const fetchProfileDetailsClear = () => ({
+  type: FETCH_PROFILE_DETAILS_CLEAR
+});
+
 export const FETCH_PROFILE_DETAILS_ERROR = 'FETCH_PROFILE_DETAILS_ERROR';
 export const fetchProfileDetailsError = error => ({
   type: FETCH_PROFILE_DETAILS_ERROR,

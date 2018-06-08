@@ -2,7 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { fetchProfileDetails, fetchServices, fetchServicesClear } from '../actions/profile';
+import {
+  fetchProfileDetails,
+  fetchProfileDetailsClear,
+  fetchServices,
+  fetchServicesClear
+}
+from '../actions/profile';
 
 import HeaderBar from './HeaderBar';
 
@@ -14,6 +20,11 @@ class Profile extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchProfileDetails(this.props.match.params.user_id));
     this.props.dispatch(fetchServices(this.props.match.params.user_id));
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(fetchProfileDetailsClear());
+    this.props.dispatch(fetchServicesClear());
   }
 
   render() {
@@ -33,7 +44,6 @@ class Profile extends React.Component {
           <Link
             to="/profiles"
             aria-label="Return to the board"
-            onClick={this.props.dispatch(fetchServicesClear)}
           > &larr; &ensp; Back to the board</Link>
         </div>
         <main className="main-dashboard">

@@ -23,7 +23,7 @@ See deployment for notes on how to deploy the project on a live system.
 * Open [http://localhost:3000](http://localhost:3000) to view it in the browser
 * To set up the server, please refer to this [readme](https://github.com/Sakela17/streamlined-beauty-app-api) for the instructions
 * Proceed to deployment steps once the server has been deployed
-#### Deployment on Netlify
+#### Deploy on Netlify
 * Create a production build by running ```REACT_APP_API_BASE_URL="https://MY-APP-.herokuapp.com" npm run build```
 * Create a Netlify app ```netlify create```. This will automatically add a file called ```.netlify``` to the root dir
 * Create ```.gitignore``` file and add ```.netlify``` and ```/node_modules``` 

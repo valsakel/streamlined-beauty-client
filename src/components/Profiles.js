@@ -21,6 +21,7 @@ class Profiles extends React.Component {
   componentWillUnmount() {
     this.props.dispatch(clearProfileLocationFilter());
     this.props.dispatch(clearProfileServiceFilter());
+    this.props.dispatch(populateProfilesClear());
   };
 
   onLocationChange = e => {
@@ -60,7 +61,6 @@ class Profiles extends React.Component {
               <Link
                 to={`/profiles/details/${user.user_id}`}
                 className="button-link"
-                onClick={this.props.dispatch(populateProfilesClear)}
                 aria-label="Click to view freelancer's profile"
               >
                 View profile
