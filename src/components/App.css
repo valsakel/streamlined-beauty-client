@@ -7,8 +7,10 @@
   left: 0;
   right: 0;
   top: 0;
-  overflow: auto;
+  /*overflow: auto;*/
   min-width: 360px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .App-logo {
