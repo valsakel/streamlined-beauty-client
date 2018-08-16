@@ -60,9 +60,9 @@ class SignUpForm extends React.Component {
         {loader}
         <HeaderBar />
         {error}
-        <div className="signin-form-wrapper">
+        <main className="signin-form-wrapper">
           <div className="signin-form">
-            <h2 className="signin-form-header">Account Sign Up</h2>
+            <h1 className="signin-form-header">Account Sign Up</h1>
             <form
               onSubmit={this.props.handleSubmit(this.onSubmit)}
             >
@@ -104,24 +104,28 @@ class SignUpForm extends React.Component {
                   <option key={ind} value={location}>{location}</option>)
                 }
               </Field>
-              <Field
-                id="roleUserField"
-                name="role"
-                label="User"
-                component={Fields}
-                type="radio"
-                value="user"
-                validate={required}
-              />
-              <Field
-                id="roleProField"
-                name="role"
-                label="Pro"
-                component={Fields}
-                type="radio"
-                value="pro"
-                validate={required}
-              />
+              <fieldset>
+                <legend>User role</legend>
+                <Field
+                  id="roleUserField"
+                  name="role"
+                  label="User"
+                  component={Fields}
+                  type="radio"
+                  value="user"
+                  validate={required}
+                />
+                <Field
+                  id="roleProField"
+                  name="role"
+                  label="Pro"
+                  component={Fields}
+                  type="radio"
+                  value="pro"
+                  validate={required}
+                />
+              </fieldset>
+
               {(this.props.roleValue === 'pro') &&
                 <Field
                   name="service_type"
@@ -171,7 +175,7 @@ class SignUpForm extends React.Component {
               user
             </p>
           </div>
-        </div>
+        </main>
       </React.Fragment>
     )
   }

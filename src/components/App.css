@@ -51,36 +51,6 @@
   animation-delay: 0.4s;
 }
 
-/*.App-header {*/
-  /*background-color: #222;*/
-  /*height: 150px;*/
-  /*padding: 20px;*/
-  /*color: white;*/
-/*}*/
-
-/*.App-title {*/
-  /*font-size: 1.5em;*/
-/*}*/
-
-/*.App-intro {*/
-  /*font-size: large;*/
-/*}*/
-
-/*button, select, input {*/
-  /*font-family: 'Raleway', sans-serif;*/
-  /*font-size: calc(.5rem + .9vw);*/
-/*}*/
-
-/*select {*/
-  /*text-transform: none;*/
-/*}*/
-
-/*input[type="password"]:focus,*/
-/*button[type="submit"]:focus,*/
-/*button[type="button"]:focus {*/
-
-/*}*/
-
 .error-bar {
   position: relative;
   top: 80px;
