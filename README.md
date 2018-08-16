@@ -1,10 +1,10 @@
-Streamlined Beauty App
+[Streamlined Beauty](https://streamlinedbeauty.netlify.com/) - advertising app
 ============================
 This MVP is designed for people that are looking for freelance professionals that perform at-home 
 beauty services in metro Atlanta. 
 As well as for freelancers that wish to advertise their services to grow their own business.
 
-<img src="src/images/responsive-design.png" alt="app screenshot" width="40%">
+<img src="src/images/responsive-design.png" alt="app screenshot" width="50%">
 
 You can view it live [here](https://streamlinedbeauty.netlify.com/)
 
@@ -32,12 +32,15 @@ See deployment for notes on how to deploy the project on a live system.
   - to get ```<YOUR_ACCESS_TOKEN>``` run ```cat ~/.netlify/config```  
   - get ```<YOUR_SITE_ID>``` (without quotes) from ```.netlify``` file in the root dir
 
-## Built With
+## API Documentation
+Can be found [here](https://github.com/valsakel/streamlined-beauty-server).
+
+## Tech Stack
  
- [create-react-app](https://github.com/facebook/create-react-app)
+[create-react-app](https://github.com/facebook/create-react-app)
  
- [React](https://reactjs.org/)
+[React](https://reactjs.org/)
  
- [Redux](https://redux.js.org/)
+[Redux](https://redux.js.org/)
  
- [jwt-decode](https://www.npmjs.com/package/jwt-decode)
+[jwt-decode](https://www.npmjs.com/package/jwt-decode)
