@@ -33,6 +33,17 @@ class Profiles extends React.Component {
   };
 
   render() {
+
+    if (this.props.loading) {
+      return (
+        <div className="bouncing-loader">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      );
+    }
+
     const filterByLocation = user => {
       return user.location === this.props.filteredLocation || this.props.filteredLocation === 'Pick a location';
     };
@@ -62,10 +73,10 @@ class Profiles extends React.Component {
                 to={`/profiles/details/${user.user_id}`}
                 className="button-link"
                 aria-label="Click to view freelancer's profile"
+                title="View profile"
               >
                 View profile
               </Link>
-              {/*<button>View profile</button>*/}
             </footer>
           </article>
         </section>
@@ -78,18 +89,18 @@ class Profiles extends React.Component {
         <div className="error-bar" aria-live="polite">{this.props.error}</div>
         }
         <main className="main-dashboard">
+          <h1 className="main-dashboard-header">Browse profiles</h1>
           <div className="main-dashboard-filter-form">
             <form>
               <label>
-                <select onChange={this.onLocationChange}>
-                  {/*<option value="" selected>select your beverage</option>*/}
+                <select onChange={this.onLocationChange} aria-label="Pick a location">
                   {this.props.locations.map((location, ind) => (
                     <option value={location} key={ind}>{location}</option>
                   ))}
                 </select>
               </label>
               <label>
-                <select onChange={this.onServiceChange}>
+                <select onChange={this.onServiceChange} aria-label="Pick a pro">
                   {this.props.serviceTypes.map((service, ind) => (
                     <option value={service} key={ind}>{service}</option>
                   ))}
@@ -111,6 +122,7 @@ const mapStateToProps = state => {
     filteredLocation: state.profiles.filteredLocation,
     serviceTypes: state.profiles.serviceTypes,
     filteredServiceType: state.profiles.filteredServiceType,
+    loading: state.profiles.loading,
     error: state.profiles.error
   }
 };

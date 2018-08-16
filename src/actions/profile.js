@@ -47,7 +47,6 @@ export const fetchProfileDetails = (userId) => (dispatch, getState) => {
     .then(res => normalizeErrors(res))
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       dispatch(fetchProfileDetailsSuccess(data))
     })
     .catch(() => {
@@ -57,7 +56,6 @@ export const fetchProfileDetails = (userId) => (dispatch, getState) => {
 };
 
 export const fetchServices = (user_id) => (dispatch, getState) => {
-  console.log('fetchServices ran');
   return fetch(`${API_BASE_URL}/api/profiles/services/${user_id}`, {
     method: 'GET',
     headers: {
@@ -68,7 +66,6 @@ export const fetchServices = (user_id) => (dispatch, getState) => {
   // .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       dispatch(fetchServicesSuccess(data))
     })
     .catch(() => {

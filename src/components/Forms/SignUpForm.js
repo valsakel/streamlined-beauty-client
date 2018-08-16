@@ -1,51 +1,69 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { reduxForm, Field, focus, formValueSelector, getFormSyncErrors } from 'redux-form';
+import { reduxForm, Field, formValueSelector, getFormSyncErrors } from 'redux-form';
 import HeaderBar from '../HeaderBar';
 import Fields from './Fields';
-import {isTrimmed, nonEmpty, required, validEmail, length, matches} from './validators';
+import {isTrimmed, nonEmpty, required, validEmail, length} from './validators';
 import { registerUser } from '../../actions/registerUser';
 
 import './forms.css';
+import {login} from "../../actions/auth";
 
 const passwordLength = length({min: 8, max: 72});
 // const matchesPassword = matches('password');
 
-const locations = ['Pick a location', 'Kennesaw', 'Marietta', 'Acworth'];
-
 class SignUpForm extends React.Component {
+
+  componentWillReceiveProps(nextProp) {
+    if (nextProp.loginError) {
+      document.getElementById('top').scrollIntoView();
+    }
+  }
+
   onSubmit = (values) => {
-    console.log(this.props);
     const {full_name, email, password, location, role, service_type = ''} = values;
     const user = {full_name, email, password, location, role, service_type};
     return this.props.dispatch(registerUser(user));
   };
 
   render() {
+    let loader;
+    if (this.props.loading) {
+      loader = (
+        <div className="bouncing-loader">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      );
+    }
+
+    let error;
+    if (this.props.loginError) {
+      error = (
+        <div className="error-bar" aria-live="polite" role="alert">{this.props.loginError}</div>
+      );
+    }
+
     // If user logged in (which happens automatically when registration
     // is successful) redirect to the user's dashboard
     if (this.props.isAuthenticated) {
-      console.log(this.props.user.role);
-
       if (this.props.user.role === 'pro') {
         return <Redirect to="/profiles/myprofile"/>;
       }
       return <Redirect to="/profiles"/>
     }
-    console.log(this.props.syncErrors);
 
     return (
       <React.Fragment>
+        {loader}
         <HeaderBar />
-        {this.props.error &&
-      <div className="error-bar" aria-live="polite" role="alert">{this.props.error}</div>
-      }
+        {error}
         <div className="signin-form-wrapper">
           <div className="signin-form">
             <h2 className="signin-form-header">Account Sign Up</h2>
             <form
-              // method="post"
               onSubmit={this.props.handleSubmit(this.onSubmit)}
             >
               <Field
@@ -54,6 +72,7 @@ class SignUpForm extends React.Component {
                 type="text"
                 component={Fields}
                 validate={[required, nonEmpty, isTrimmed]}
+                autoFocus={true}
                 autocomplete="off"
               />
               <Field
@@ -141,15 +160,21 @@ class SignUpForm extends React.Component {
               Already have an account?
               <Link to="/signin">Sign In</Link>
             </p>
+            <p className="account-message">
+              Or sign in as
+              <button
+                type="button"
+                className="demo-btn"
+                onClick={() => this.props.dispatch(login("user_name@email.com", "password"))}>
+                Demo
+              </button>
+              user
+            </p>
           </div>
         </div>
       </React.Fragment>
     )
   }
-}
-
-function scroll () {
-  return window.scrollTo( 0, 1000 );
 }
 
 SignUpForm = reduxForm({
@@ -164,13 +189,14 @@ const selector = formValueSelector('signup');
 // This will allow to conditionally add 'Select type' field to the form
 SignUpForm = connect(
   state => {
-    console.log('STATE', state);
     const roleValue = selector(state, 'role');
 
     return {
       roleValue,
       isAuthenticated: state.auth.currentUser !== null,
       user: state.auth.currentUser,
+      loading: state.auth.loading,
+      loginError: state.auth.error,
       locations: state.profiles.locations,
       serviceTypes: state.profiles.serviceTypes,
       syncErrors: getFormSyncErrors('signup')(state)

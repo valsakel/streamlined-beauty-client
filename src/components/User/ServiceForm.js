@@ -22,8 +22,7 @@ class ServiceForm extends React.Component {
           )}
         </Field>
       )
-    })
-
+    });
 
     if(serviceList.length === 1) {
       return (
@@ -38,14 +37,11 @@ class ServiceForm extends React.Component {
         <section>
           <form>
             {list}
-
           </form>
           <div>
             <a href="#">Add a service ...</a>
           </div>
         </section>
-
-
       </div>
     )
 

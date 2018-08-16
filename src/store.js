@@ -1,18 +1,14 @@
-import {createStore, applyMiddleware, compose} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import rootReducer from './reducers';
 import thunk from 'redux-thunk';
+import {composeWithDevTools} from 'redux-devtools-extension';
 import {loadAuthToken} from './actions/localStorage';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 
-
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
-// const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
-
 const store = createStore(
   rootReducer,
-  compose(
-    applyMiddleware(thunk),
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(
+    applyMiddleware(thunk)
   )
 );
 

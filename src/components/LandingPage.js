@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import HeaderBar from './HeaderBar';
 
 import './LandingPage.css';
 
-const LandingPage = (props) => {
+const LandingPage = () => {
   return (
     <React.Fragment>
       <div className="container">
@@ -15,9 +15,9 @@ const LandingPage = (props) => {
         <HeaderBar />
         <main className="landing-page-main-section" role="main">
           <section className="landing-page-hero-section">
-            <h2 id="welcome" className="landing-page-welcome-header">
+            <h1 id="welcome" className="landing-page-welcome-header">
               You came to the place where freelance beauty professionals and consumers connect in metro Atlanta
-            </h2>
+            </h1>
             <div className="landing-page-welcome-footer">
               <Link
                 to={`/signup`}
@@ -37,7 +37,7 @@ const LandingPage = (props) => {
           </section>
           <section id="landing-page-how-works-wrapper">
             <div className="landing-page-how-works-section">
-              <h3>If you're hiring</h3>
+              <h2>If you're hiring</h2>
               <div>On SB you will find a list of local freelance
                 beauty professionals that provide services
                 to people within a comfort of their own
@@ -60,7 +60,7 @@ const LandingPage = (props) => {
               </ul>
             </div>
             <div className="landing-page-how-works-section">
-              <h3>If you're freelancing</h3>
+              <h2>If you're freelancing</h2>
               <div>SB is a great place to advertise your
                 services, and to grow your own freelance
                 business</div>

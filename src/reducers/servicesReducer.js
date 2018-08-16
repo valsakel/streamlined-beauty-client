@@ -7,7 +7,7 @@ from '../actions/profile';
 
 const initialState = {
   data: [],
-  services: ['Pick a service', 'Make-up', 'Manicure', 'Pedicure', 'Wedding Trail'],
+  services: ['Pick a service', 'Make-up', 'Manicure', 'Pedicure', 'Wedding Trail', 'Haircut', 'Waxing', 'Facial'],
   error: null
 };
 

@@ -41,15 +41,15 @@ class HeaderBar extends React.Component {
               <span>Beauty</span>
             </Link>
           </div>
-          <nav role="navigation">
+          <nav>
             <button
               id="menuButton"
               type="button"
               onClick={this.handleClick}
               ref="open"
               aria-expanded={this.state.visible}
-              aria-label="MENU"
-              aria-controls="overlay-menu"
+              aria-label="Menu"
+              // aria-controls="menu"
             >
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>

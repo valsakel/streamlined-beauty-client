@@ -3,7 +3,6 @@ import './forms.css';
 
 
 const Fields = props => {
-  console.log('Field component rendered');
   const Element = props.element || 'input';
   return (
     <div className="form-field" id={props.id}>
@@ -14,6 +13,8 @@ const Fields = props => {
         type={props.type}
         value={props.value}
         aria-required="true"
+        autoFocus={props.autoFocus}
+        // placeholder={props.placeholder ? props.placeholder : null }
         // placeholder={props.label}
         {...props.input}
       >

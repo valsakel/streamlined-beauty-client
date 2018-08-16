@@ -1,10 +1,9 @@
 import { API_BASE_URL } from '../config';
 import normalizeErrors from './utils';
-import { login } from './auth';
-import {SubmissionError} from "redux-form";
+import {authError, authRequest, login} from './auth';
 
 export const registerUser = (user) => dispatch => {
-  console.log('registerUser ran', user);
+  dispatch(authRequest());
   return fetch(`${API_BASE_URL}/api/users`, {
     method: 'POST',
     headers: {
@@ -14,16 +13,6 @@ export const registerUser = (user) => dispatch => {
   })
     .then(res => normalizeErrors(res))
     .then(res => res.json())
-    .then(res => {
-      dispatch(login(user.email, user.password))
-    })
-    .catch(err => {
-      console.log('registerUser ERROR', err);
-      // Could not register, return a SubmissionError for Redux Form
-      return Promise.reject(
-        new SubmissionError({
-          _error: err.message
-        })
-      );
-    })
+    .then(() => dispatch(login(user.email, user.password)))
+    .catch(error => dispatch(authError(error.message)))
 };

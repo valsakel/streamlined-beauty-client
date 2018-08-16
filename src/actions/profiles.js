@@ -1,6 +1,11 @@
 import { API_BASE_URL } from "../config";
 import normalizeErrors from './utils';
 
+export const REQUEST_PROFILES = 'REQUEST_PROFILES';
+export const requestProfiles = () => ({
+  type: REQUEST_PROFILES
+});
+
 export const POPULATE_PROFILES_SUCCESS = 'POPULATE_PROFILES_SUCCESS';
 export const populateProfilesSuccess = data => ({
   type: POPULATE_PROFILES_SUCCESS,
@@ -43,12 +48,12 @@ export const clearProfileServiceFilter = service => ({
 });
 
 export const fetchProfiles = () => (dispatch, getState) => {
+  dispatch(requestProfiles());
   // const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/profiles`)
     .then(res => normalizeErrors(res))
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       dispatch(populateProfilesSuccess(data))
     })
     .catch(() => {

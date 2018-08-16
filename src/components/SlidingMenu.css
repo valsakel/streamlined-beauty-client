@@ -11,7 +11,7 @@
     cubic-bezier(0, .52, 0, 1);
     overflow: scroll;
     z-index: 1000;
-    font-size: 1.2rem;
+    font-size: calc(.7rem + .9vw);
 }
 
 #flyoutMenu.hide {
@@ -48,7 +48,7 @@
     margin-bottom: 15px;
     border: 0;
     background: none;
-    font-size: 1.3rem;
+    font-size: calc(.7rem + .9vw);
     vertical-align: baseline;
     font-family: inherit;
     -webkit-appearance: none;

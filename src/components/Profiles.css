@@ -5,16 +5,18 @@
     padding: 1em;
     max-width: 900px;
     display: flex;
-    /*flex-direction: column;*/
     flex-wrap: wrap;
-    /*padding-top: 30px;*/
-    /*padding-bottom: 30px;*/
+    animation: fadein 1s;
+}
+
+.main-dashboard-header {
+    width: 100%;
+    text-align: center;
 }
 
 .main-dashboard-filter-form {
     flex: 1 0 100%;
     margin: 1em 0;
-    /*max-width: 450px;*/
 }
 
 .main-dashboard-filter-form form {
@@ -25,22 +27,16 @@
 .main-dashboard-filter-form label {
     padding-left: 1em;
     padding-right: 1em;
-    /*width: 50%;*/
-
 }
 
 .main-dashboard-filter-form select {
     height: 40px;
     margin: 0;
     padding: 2px;
-    /*font-size: calc(.6em + .9vw);*/
-    /*flex-grow: 1;*/
-
 }
 
 .data-card-section {
     background-color: #ffffff;
-    /*margin: 20px 20px 0 20px;*/
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -74,7 +70,6 @@
 }
 
 .data-card-info > * {
-
     margin-top: 1%;
     margin-bottom: 2%;
 }

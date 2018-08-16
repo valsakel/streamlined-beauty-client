@@ -72,6 +72,11 @@ export const deleteProfileServiceError = (error) => {
   }
 };
 
+export const REQUEST_MYPROFILE_DETAILS = 'REQUEST_MYPROFILE_DETAILS';
+export const requestMyProfileDetails = () => ({
+  type: REQUEST_MYPROFILE_DETAILS
+});
+
 export const FETCH_MYPROFILE_DETAILS_SUCCESS = 'FETCH_MYPROFILE_DETAILS_SUCCESS';
 export const fetchMyProfileDetailsSuccess = data => ({
   type: FETCH_MYPROFILE_DETAILS_SUCCESS,
@@ -104,7 +109,7 @@ export const postProfileServiceError = error => ({
 });
 
 export const fetchMyProfileDetails = () => (dispatch, getState) => {
-  console.log('fetchMyProfileDetails ran');
+  dispatch(requestMyProfileDetails());
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/myprofile/details`, {
     method: 'GET',
@@ -116,11 +121,9 @@ export const fetchMyProfileDetails = () => (dispatch, getState) => {
   // .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       dispatch(fetchMyProfileDetailsSuccess(data))
     })
     .catch(error => {
-      console.error(error);
       dispatch(fetchMyProfileDetailsError(error));
     });
 };
@@ -137,7 +140,6 @@ export const fetchMyProfileDetails = () => (dispatch, getState) => {
 //   // .then(res => normalizeResponseErrors(res))
 //     .then(res => res.json())
 //     .then(data => {
-//       console.log(data);
 //       dispatch(fetchMyProfileServicesSuccess(data))
 //     })
 //     .catch(error => {
@@ -148,7 +150,6 @@ export const fetchMyProfileDetails = () => (dispatch, getState) => {
 
 
 export const postMyProfileService = (service) => (dispatch, getState) => {
-  console.log('postMyProfileService ran');
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/myprofile/service`, {
     method: 'POST',
@@ -161,20 +162,16 @@ export const postMyProfileService = (service) => (dispatch, getState) => {
   })
   .then(res => normalizeErrors(res))
     .then(res => res.json())
-    .then(data => {
-      console.log('SERVICE', data);
-      // dispatch(fetchMyProfileDetailsSuccess(data))
+    .then(() => {
       dispatch(fetchServices(service.user_id))
     })
     .catch(error => {
-      console.error(error);
       const message ='Something went wrong. Please try again later';
       dispatch(postProfileServiceError(message));
     });
 };
 
 export const deleteMyProfileService = user_id => (dispatch, getState) => {
-  console.log('deleteMyProfileService ran', user_id);
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/myprofile/service/${user_id}`, {
     method: 'DELETE',
@@ -185,8 +182,7 @@ export const deleteMyProfileService = user_id => (dispatch, getState) => {
     }
   })
     .then(res => normalizeErrors(res))
-    .then(data => {
-      // dispatch(fetchMyProfileDetailsSuccess(data))
+    .then(() => {
       const user_id = getState().auth.currentUser.user_id;
       dispatch(fetchServices(user_id))
     })

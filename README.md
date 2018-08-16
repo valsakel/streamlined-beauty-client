@@ -1,6 +1,7 @@
 Streamlined Beauty App
 ============================
-This MVP is designed for people that are looking for freelance professionals that perform at-home beauty services in metro Atlanta. 
+This MVP is designed for people that are looking for freelance professionals that perform at-home 
+beauty services in metro Atlanta. 
 As well as for freelancers that wish to advertise their services to grow their own business.
 
 <img src="src/images/responsive-design.png" alt="app screenshot" width="40%">

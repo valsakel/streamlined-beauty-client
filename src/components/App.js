@@ -15,6 +15,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div id='top'></div>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/profiles" component={Profiles}/>
         <Route exact path="/profiles/details/:user_id" component={Profile}/>

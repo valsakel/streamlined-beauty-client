@@ -1,21 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import HeaderBar from './HeaderBar';
-
-
 import ServiceList from './ServiceList';
 
 import placeholder_person from '../../images/placeholder_person.jpg';
 
 class UserDashboard extends React.Component {
-  // componentDidMount() {
-  //   console.log('User dashboard did mount');
-  //   console.log(this.props);
-  // }
 
   render() {
-    console.log(this.data);
     return (
       <React.Fragment>
         <HeaderBar />
@@ -35,18 +27,12 @@ class UserDashboard extends React.Component {
               <div className="card-user-info">
                 <h4>Christina Blank</h4>
                 <p>Kennesaw</p>
-
               </div>
-
             </header>
-
           </article>
         </section>
        <ServiceList/>
-
-
       </React.Fragment>
-
     )
   }
 }

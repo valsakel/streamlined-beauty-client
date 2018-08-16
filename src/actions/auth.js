@@ -1,5 +1,4 @@
 import jwtDecode from 'jwt-decode';
-import { SubmissionError } from 'redux-form';
 import { API_BASE_URL } from '../config';
 import normalizeErrors from './utils';
 import { saveAuthToken, clearAuthToken } from './localStorage';
@@ -35,11 +34,8 @@ export const clearAuth = () => ({
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {
-  console.log('storeAuthInfo ran');
   const decodedToken = jwtDecode(authToken);
-  console.log('decodedToken', decodedToken);
   dispatch(setAuthToken(authToken));
-  console.log('decodedToken user', decodedToken.user);
   dispatch(authSuccess(decodedToken.user));
   saveAuthToken(authToken);
 };
@@ -62,21 +58,12 @@ export const login = (email, password) => dispatch => {
     .then(({authToken}) => {
       storeAuthInfo(authToken, dispatch);
     })
-    .then(res => console.log(res))
     .catch(error => {
-      console.log('login ERROR', error);
-      dispatch(authError(error));
-      // Could not authenticate, return a SubmissionError for Redux Form
-      return Promise.reject(
-        new SubmissionError({
-          _error: error.message
-        })
-      );
-    })
+      dispatch(authError(error.message));
+    });
 };
 
 export const refreshAuthToken = () => (dispatch, getState) => {
-  console.log('refreshAuthToken ran');
   dispatch(authRequest());
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/refresh`, {
@@ -94,7 +81,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
     .catch(err => {
       // If credentials are invalid or expired, or something else went wrong,
       // Clear auth token from local storage
-      dispatch(authError(err));
+      dispatch(authError(err.message));
       dispatch(clearAuth());
       clearAuthToken(authToken);
     });

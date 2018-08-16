@@ -1,18 +1,16 @@
-
-
-form {
-    /*margin: 20px;*/
-    /*max-width: 500px;*/
-    /*min-width: 340px;*/
+label,
+.account-message,
+.account-message a,
+.demo-btn {
+    font-size: calc(.5rem + .7vw);
 }
 
 label,
 .form-btn,
-.account-message a {
+.account-message a,
+.demo-btn {
     letter-spacing: 2px;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    font-weight: 700;
 }
 
 input, select {
@@ -26,13 +24,18 @@ input, select {
     -moz-box-shadow: 1px 1px 4px #EBEBEB;
     -webkit-box-shadow: 1px 1px 4px #EBEBEB;
     line-height: 1.22rem;
-    font-size: 1rem;
+    font-size: calc(.5rem + .9vw);
     margin-top: 0.3rem;
-    padding: 1rem;
+    padding: 0.8em;
     outline: none;
-    -webkit-transition: all 0.40s ease-in-out;
-    -moz-transition: all 0.40s ease-in-out;
-    -o-transition: all 0.40s ease-in-out;
+
+}
+
+input, select, button {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    transition: all 0.30s ease-in-out;
 }
 
 input:hover, input:focus,
@@ -42,10 +45,14 @@ select:hover, select:focus {
     border-color: #71676c;
 }
 
+select:hover, select:focus,
+button:hover, button:focus {
+    cursor: pointer;
+}
+
 input[type="radio"] {
     margin: 5px 0 0 0;
     box-shadow: inset 0 0 5px  rgb(255, 255, 255);
-
 }
 
 input[type="radio"]:hover,
@@ -55,6 +62,7 @@ input[type="radio"]:focus {
     -o-transition: color 0 ease-in;
     transition: none;
     outline: #d95693 solid 2px;
+    cursor: pointer;
 }
 
 .form-btn {
@@ -63,7 +71,7 @@ input[type="radio"]:focus {
     background-color: #ce1277;
     border: 1px solid #ce1277;
     margin-top: 1em;
-    padding: 1rem;
+    padding: 2.5%;
     width: 100%;
     outline: 0;
 }
@@ -74,6 +82,25 @@ input[type="radio"]:focus {
     color: #ce1277;
     background: #ffffff;
     border: 1px solid #ce1277;
+}
+
+.demo-btn {
+    font-family: 'Raleway', sans-serif;
+    font-weight: normal;
+    border: none;
+    background: none;
+    color: #ce1277;
+    letter-spacing: normal;
+    padding: 0;
+    margin: 0 5px 0;
+}
+
+.demo-btn:hover,
+.demo-btn:focus,
+.account-message a:hover,
+.account-message a:focus {
+    color: #8d0f4c;
+    text-decoration: underline;
 }
 
 #roleUserField, #roleProField {
@@ -115,14 +142,6 @@ input[type="radio"]:focus {
     to {top: 80px;}
 }
 
-
-
-
-@keyframes fadein {
-    from { opacity: 0}
-    to   { opacity: 1}
-}
-
 .signin-form-wrapper {
     position: relative;
     top: 80px;
@@ -142,19 +161,17 @@ input[type="radio"]:focus {
 
     background-color: #ffffff;
     padding: 20px;
-
 }
 
 .signin-form-header {
     text-align: center;
     text-transform: uppercase;
+    font-size: calc(1rem + .9vw);
 }
 
 .form-field {
     position: relative;
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    margin-top: 3rem;
+    margin-top: 2.5rem;
     margin-bottom: 1.5rem;
 }
 
@@ -187,9 +204,10 @@ input[type="radio"]:focus {
     box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
 }
 
-
 .account-message {
-    margin: 20px auto 0 auto;
+    /*margin: 20px auto 0 auto;*/
+    margin: 0;
+    padding-bottom: 2.5%;
     text-align: center;
 }
 
@@ -201,16 +219,12 @@ input[type="radio"]:focus {
     margin-left: 5px;
 }
 
-.account-message a:hover {
-    color: #8d0f4c;
-}
-
 .form-error {
     position: absolute;
-    bottom: -1.5rem;
+    /*bottom: -calc(.5rem + .9vw);*/
     color: #D50000;
-    text-transform: uppercase;
-    font-size: 0.8rem;
+    /*text-transform: uppercase;*/
+    font-size: calc(.5rem + .9vw);
 }
 
 .error-border {
@@ -219,6 +233,5 @@ input[type="radio"]:focus {
 
 .placeholder-class {
     font-family: 'Raleway', sans-serif;
-    font-size: calc(.7rem + .9vw);
-
+    font-size: calc(.5rem + .9vw);
 }

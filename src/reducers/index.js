@@ -5,7 +5,7 @@ import profiles from './profilesReducer';
 import profile from './profileDetailsReducer';
 import services from './servicesReducer';
 import myProfile from './myProfileReducer';
-import myProfilesServices from './myProfileServicesReducer';
+import myProfileServices from './myProfileServicesReducer';
 
 const rootReducer = combineReducers({
   auth,
@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   profile,
   services,
   myProfile,
-  myProfilesServices,
+  myProfileServices,
   form: formReducer
 });
 

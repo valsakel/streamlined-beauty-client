@@ -27,9 +27,13 @@ class Profile extends React.Component {
     this.props.dispatch(fetchServicesClear());
   }
 
+  componentWillReceiveProps(nextProp) {
+    if (nextProp.profileError || nextProp.servicesError) {
+      document.getElementById('top').scrollIntoView();
+    }
+  }
+
   render() {
-    console.log(this.props.user.email);
-    console.log(this.props.services);
 
     return (
       <React.Fragment>

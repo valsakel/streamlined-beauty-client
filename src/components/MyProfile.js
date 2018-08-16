@@ -1,13 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { requireService } from './Forms/validators';
 import RequiresLogin from './RequiresLogin';
 
 import HeaderBar from './HeaderBar';
 
 import {
-  editProfileAccountStart,
   fetchMyProfileDetails,
   setMyProfileServiceValChange,
   clearMyProfileServiceValChange,
@@ -15,7 +13,6 @@ import {
   deleteMyProfileService,
   setMyProfilePriceValChange,
   clearMyProfilePriceValChange,
-
   postMyProfileService,
   editProfileServicesStart,
   editProfileServicesEnd
@@ -27,30 +24,25 @@ import { fetchServices } from '../actions/profile';
 import './MyProfile.css';
 import placeholder_person from '../images/placeholder_person.jpg';
 
-
-
-
 class MyProfile extends React.Component {
   componentDidMount() {
-    console.log('MyProfile did mount');
-    console.log(this.props);
     this.props.dispatch(fetchMyProfileDetails());
     this.props.dispatch(fetchServices(this.props.user.user_id));
-
   }
-  onEditAccount = e => {
-    // e.preventDefault;
-    console.log('onEditSubmit ran');
-  };
+
+  componentWillReceiveProps(nextProp) {
+    if (nextProp.profileError || nextProp.servicesError) {
+      console.log(nextProp.profileError);
+      console.log(nextProp.servicesError);
+      document.getElementById('top').scrollIntoView();
+    }
+  }
 
   onServiceValChange = (e) => {
-    console.log(e.target.value);
-
     this.props.dispatch(setMyProfileServiceValChange(e.target.value));
   };
 
   onPriceValChange = (e) => {
-    console.log(e.target.value);
     this.props.dispatch(setMyProfilePriceValChange(e.target.value));
   };
 
@@ -61,41 +53,50 @@ class MyProfile extends React.Component {
     if (this.props.serviceVal === 'Pick a service') {
       return this.props.dispatch(errorMyProfileServiceValChange('Required field'));
     }
-    console.log('PRICE', this.props.priceVal);
     const service = {
       user_id: this.props.user.user_id,
       service: this.props.serviceVal,
       price: this.props.priceVal
     };
-    console.log('addNewService OBJECT', service);
     this.props.dispatch(postMyProfileService(service));
     document.getElementById("my-profile-add-services-form").reset();
     this.props.dispatch(clearMyProfileServiceValChange());
     this.props.dispatch(clearMyProfilePriceValChange());
-
+    this.refs.selectService.focus();
   };
 
   onServiceDelete = (e) => {
     e.preventDefault();
-    console.log('onServiceDelete ran', e.target.getAttribute('data-service-id'));
     this.props.dispatch(deleteMyProfileService(e.target.getAttribute('data-service-id')));
   };
 
   render() {
+    let loader;
+    if (this.props.loading) {
+      loader = (
+        <div className="bouncing-loader">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      );
+    }
+
     return (
       <React.Fragment>
+        {loader}
         <HeaderBar />
         {this.props.error &&
         <div className="error-bar" aria-live="polite" role="alert">{this.props.error}</div>
         }
         <main className="main-dashboard">
           <section className="my-profile-section">
-            <h2>
+            <h1>
               My Profile
-            </h2>
+            </h1>
             <section className="my-profile-account">
               <h2>Account</h2>
-              <main className="card-header data-card-header">
+              <div className="card-header data-card-header">
                 <div className="card-user-img data-card-img">
                   <img src={placeholder_person} className="data-user-img" alt="placeholder clip art" />
                 </div>
@@ -108,7 +109,7 @@ class MyProfile extends React.Component {
                 {/*<div className="my-profile-edit-btn-section">*/}
                 {/*<button className="profile-edit-btn" type="button" onClick={() => this.props.dispatch(editProfileAccountStart())}>Edit</button>*/}
                 {/*</div>*/}
-              </main>
+              </div>
             </section>
             <section className="my-profile-services my-profile-account">
               <h2>Services</h2>
@@ -124,7 +125,7 @@ class MyProfile extends React.Component {
                   </ul>
                 </div>
                 <div>
-                  <ul>
+                  <div className="my-profile-services-remove-section">
                     {this.props.userServices.map((service, ind) => (
                       <button
                         className="my-profile-destroy-service"
@@ -136,7 +137,7 @@ class MyProfile extends React.Component {
                       >
                       </button>)
                     )}
-                  </ul>
+                  </div>
                 </div>
               </div>
               {this.props.editServices
@@ -145,32 +146,32 @@ class MyProfile extends React.Component {
                   <form id="my-profile-add-services-form">
                     {this.props.error === 'Required field' &&
                     <div className="service-form-error" aria-live="polite">{this.props.error}</div>}
-                    <label className="my-profile-service-label">
+                    <label className="my-profile-service-list-field">
                       {/*Service*/}
                       <select
                         onChange={this.onServiceValChange}
-                        className="my-profile-add-services-form-field"
+                        // className="my-profile-add-services-form-field"
                         aria-label="Pick a location"
-                        autoFocus="true"
+                        ref="selectService"
+                        autoFocus
                       >
                         {this.props.filterServices.map((service, ind) => (
                           <option value={service} key={ind}>{service}</option>
                         ))}
                       </select>
                     </label>
-                    <label className="my-profile-price-label">
+                    <label className="my-profile-service-price-field">
                       {/*Price*/}
                       <input
                         onChange={this.onPriceValChange}
-                        id="my-profile-price-input"
                         type="number"
                         placeholder="$$$"
-                        className="my-profile-add-services-form-field"
                         title="Price"
                         aria-label="Service price"
                       />
                     </label>
                     <button
+                      className="form-btn"
                       type="submit"
                       onClick={this.addNewService}
                       aria-label="Add service"
@@ -178,6 +179,7 @@ class MyProfile extends React.Component {
                       Add
                     </button>
                     <button
+                      className="form-btn"
                       type="button"
                       onClick={() => this.props.dispatch(editProfileServicesEnd())}
                       aria-label="Cancel form"
@@ -188,14 +190,15 @@ class MyProfile extends React.Component {
                 </div>
                 :
                 <div>
-                  <a
-                    href="#"
+                  <button
+                    type="button"
                     onClick={() => this.props.dispatch(editProfileServicesStart())}
-                    className="my-profile-add-services-link"
+                    className="my-profile-add-services-btn"
                     aria-label="Click to add a new service"
+                    autoFocus
                   >
                     Add a service ...
-                  </a>
+                  </button>
                 </div>
               }
             </section>
@@ -210,13 +213,16 @@ const mapStateToProps = state => {
   // const currentUser = state.main_dashboard.data[2];
   return {
     editAccount: state.myProfile.editAccount,
-    editServices: state.myProfilesServices.editServices,
+    loading: state.myProfile.loading,
+    profileError: state.myProfile.error,
+    editServices: state.myProfileServices.editServices,
+    servicesError: state.myProfileServices.error,
     user: state.auth.currentUser,
     userServices: state.services.data,
     filterServices: state.services.services,
-    serviceVal: state.myProfilesServices.serviceVal,
-    priceVal: state.myProfilesServices.priceVal,
-    error: state.myProfilesServices.error,
+    serviceVal: state.myProfileServices.serviceVal,
+    priceVal: state.myProfileServices.priceVal,
+    error: state.myProfileServices.error,
   }
 };
 

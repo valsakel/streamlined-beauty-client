@@ -3,3 +3,8 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+@keyframes fadein {
+  from { opacity: 0}
+  to   { opacity: 1}
+}
